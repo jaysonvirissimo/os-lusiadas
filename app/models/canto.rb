@@ -1,0 +1,2 @@
+class Canto < ApplicationRecord
+end
