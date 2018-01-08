@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe EpicTextConverter do
@@ -33,4 +35,25 @@ RSpec.describe EpicTextConverter do
 
   it { expect(subject).to respond_to(:convert) }
   it { expect(described_class).to respond_to(:convert) }
+
+  it 'should populate the database with cantos' do
+    expect { subject.convert }.to change { Canto.count }.from(0).to(2)
+  end
+  it 'should populate the database with stanzas' do
+    expect { subject.convert }.to change { Stanza.count }.from(0).to(2)
+  end
+
+  describe 'should properly associate stanzas with cantos' do
+    let(:primeiro) { Canto.find_by(number: 1) }
+    let(:segundo) { Canto.find_by(number: 2) }
+
+    before { subject.convert }
+
+    it { expect(primeiro).to be }
+    it { expect(primeiro.stanzas).to_not be_empty }
+    it { expect(primeiro.stanzas.first.number).to eq(1) }
+    it { expect(segundo).to be }
+    it { expect(segundo.stanzas).to_not be_empty }
+    it { expect(segundo.stanzas.first.number).to eq(2) }
+  end
 end
