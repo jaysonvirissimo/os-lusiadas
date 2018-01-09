@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109013445) do
+ActiveRecord::Schema.define(version: 20180109014239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 20180109013445) do
     t.index ["canto_id"], name: "index_stanzas_on_canto_id"
   end
 
+  create_table "words", force: :cascade do |t|
+    t.bigint "line_id"
+    t.string "value"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["line_id"], name: "index_words_on_line_id"
+  end
+
   add_foreign_key "lines", "stanzas"
   add_foreign_key "stanzas", "cantos"
+  add_foreign_key "words", "lines"
 end
