@@ -19,7 +19,7 @@ RSpec.describe EpicTextConverter do
 
       Canto Segundo
 
-      1
+      2
       Já neste tempo o lúcido Planeta,
       Que as horas vai do dia distinguindo,
       Chegava à desejada e lenta meta,
@@ -37,7 +37,7 @@ RSpec.describe EpicTextConverter do
   it { expect(described_class).to respond_to(:convert) }
 
   it 'should populate the database with cantos' do
-    expect { subject.convert }.to change { Canto.count }.from(0).to(2)
+    expect { subject.convert }.to change { Canto.count }.from(0).to(10)
   end
   it 'should populate the database with stanzas' do
     expect { subject.convert }.to change { Stanza.count }.from(0).to(2)
@@ -50,9 +50,11 @@ RSpec.describe EpicTextConverter do
     before { subject.convert }
 
     it { expect(primeiro).to be }
+    it { expect(primeiro.name).to eq('Canto Primeiro') }
     it { expect(primeiro.stanzas).to_not be_empty }
     it { expect(primeiro.stanzas.first.number).to eq(1) }
     it { expect(segundo).to be }
+    it { expect(segundo.name).to eq('Canto Segundo') }
     it { expect(segundo.stanzas).to_not be_empty }
     it { expect(segundo.stanzas.first.number).to eq(2) }
   end
