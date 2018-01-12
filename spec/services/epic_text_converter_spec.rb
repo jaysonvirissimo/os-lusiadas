@@ -57,5 +57,15 @@ RSpec.describe EpicTextConverter do
     it { expect(segundo.name).to eq('Canto Segundo') }
     it { expect(segundo.stanzas).to_not be_empty }
     it { expect(segundo.stanzas.first.number).to eq(2) }
+
+    describe 'and words with lines' do
+      let(:first_line) { primeiro.stanzas.first.lines.find_by(number: 1) }
+      let(:words) { first_line.words }
+
+      it { expect(first_line).to be }
+      it { expect(words).to_not be_empty }
+      it { expect(words.find_by(position: 1)).to eq('As') }
+      it { expect(words.find_by(position: 6)).to eq('assinalados,') }
+    end
   end
 end
