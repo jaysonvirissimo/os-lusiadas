@@ -64,8 +64,8 @@ RSpec.describe EpicTextConverter do
 
       it { expect(first_line).to be }
       it { expect(words).to_not be_empty }
-      it { expect(words.find_by(position: 1)).to eq('As') }
-      it { expect(words.find_by(position: 6)).to eq('assinalados,') }
+      it { expect(words.find_by(position: 1).value).to eq('As') }
+      it { expect(words.find_by(position: 6).value).to eq('assinalados,') }
     end
   end
 end

@@ -30,8 +30,8 @@ class EpicTextConverter
 
   private
 
-  attr_accessor :current_canto, :current_stanza
-  attr_reader :cantos, :current_canto, :string
+  attr_accessor :current_canto, :current_stanza, :current_line
+  attr_reader :cantos, :string
 
   def build_cantos
     PORTUGUESE_ORDINALS.each_with_index do |ordinal, index|
@@ -44,15 +44,20 @@ class EpicTextConverter
   def build_stanzas
     string.each_line do |line|
       next if line.blank?
-      convert_line(line)
+      convert_line(line.strip)
     end
   end
 
   def convert_line(line)
-    if STANZA_BOUNDS.include?(line.strip.to_i)
-      self.current_stanza = Stanza.create(number: line.strip.to_i, canto: current_canto)
-    elsif cantos.pluck(:name).include?(line.strip)
-      self.current_canto = cantos.find_by(name: line.strip)
+    if STANZA_BOUNDS.include?(line.to_i)
+      self.current_stanza = Stanza.create(number: line.to_i, canto: current_canto)
+    elsif cantos.pluck(:name).include?(line)
+      self.current_canto = cantos.find_by(name: line)
+    else
+      self.current_line = Line.create(number: current_stanza.lines.count + 1, stanza: current_stanza)
+      line.split(' ').each_with_index do |word, index|
+        Word.create(line: current_line, value: word, position: index + 1)
+      end
     end
   end
 end
