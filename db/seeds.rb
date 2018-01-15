@@ -1,7 +1,12 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+before = Time.current
+puts 'Seeding the entire epic can take up to 2 minutes.'
+puts 'Building now...'
+
+string = File.read("#{Rails.root}/lib/assets/os-lusiadas.txt")
+EpicTextConverter.convert(string)
+
+after = Time.current
+puts "Completed in #{(after - before).round} seconds."
