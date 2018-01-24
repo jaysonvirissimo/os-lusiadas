@@ -1,12 +1,11 @@
+# frozen_string_literal: true
+
 class LinesController < ApplicationController
-  def read
+  def review
+    @line_review_presenter = LineReviewPresenter.new(line: line)
   end
 
-  def recall
-  end
-
-  def test
-  end
+  def test; end
 
   private
 
