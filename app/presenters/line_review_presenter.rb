@@ -24,7 +24,7 @@ class LineReviewPresenter
 
   def words
     @words = line.words.order(:position).map do |word|
-      present_word(word.value.chars, word.position)
+      WordPresenter.new(word: word, step: step)
     end
   end
 
@@ -46,5 +46,30 @@ class LineReviewPresenter
       rest: characters.drop(1).join,
       position: position
     )
+  end
+
+  class WordPresenter
+    attr_reader :position, :visible
+
+    def initialize(word:, step:)
+      @characters = word.value.chars
+      @position = word.position
+      @visible = visible
+    end
+
+    def first
+      @first ||= OpenStruct.new(
+        value: characters.take(1).join,
+        visible: visible
+      )
+    end
+
+    def rest
+      @rest ||= OpenStruct.new(value: characters.drop(1).join, visible: visible)
+    end
+
+    private
+
+    attr_reader :characters
   end
 end
