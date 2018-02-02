@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe LineReviewPresenter do
-  it { expect(described_class).to respond_to(:new)}
+  it { expect(described_class).to respond_to(:new) }
 
   context 'without specifying a step' do
     let(:canto) { Fabricate(:canto) }

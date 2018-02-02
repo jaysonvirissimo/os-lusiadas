@@ -23,7 +23,7 @@ class LineReviewPresenter
   end
 
   def words
-    @words = line.words.order(:position).map do |word|
+    @words ||= line.words.order(:position).map do |word|
       WordPresenter.new(word: word, step: step)
     end
   end
@@ -38,14 +38,6 @@ class LineReviewPresenter
 
   def stanza
     line.stanza
-  end
-
-  def present_word(characters, position)
-    OpenStruct.new(
-      first: characters.take(1).join,
-      rest: characters.drop(1).join,
-      position: position
-    )
   end
 
   class WordPresenter
