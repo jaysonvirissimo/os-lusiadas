@@ -98,7 +98,7 @@ RSpec.describe LineReviewPresenter do
 
         it 'should display only the first letter' do
           expect(instance.first.visible).to be_truthy
-          expect(instance.first.visible).to be_falsey
+          expect(instance.rest.visible).to be_falsey
         end
       end
     end
@@ -120,7 +120,7 @@ RSpec.describe LineReviewPresenter do
 
         it 'should display only the first letter' do
           expect(instance.first.visible).to be_truthy
-          expect(instance.first.visible).to be_falsey
+          expect(instance.rest.visible).to be_falsey
         end
       end
     end
@@ -142,7 +142,7 @@ RSpec.describe LineReviewPresenter do
 
         it 'should display only the first letter' do
           expect(instance.first.visible).to be_truthy
-          expect(instance.first.visible).to be_falsey
+          expect(instance.rest.visible).to be_falsey
         end
       end
     end
@@ -164,7 +164,7 @@ RSpec.describe LineReviewPresenter do
 
         it 'should not display any letters' do
           expect(instance.first.visible).to be_falsey
-          expect(instance.first.visible).to be_falsey
+          expect(instance.rest.visible).to be_falsey
         end
       end
     end
