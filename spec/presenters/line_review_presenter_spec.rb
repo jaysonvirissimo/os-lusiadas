@@ -16,7 +16,7 @@ RSpec.describe LineReviewPresenter do
     it { expect(subject).to respond_to(:step) }
     it { expect(subject.step).to be_zero }
     it { expect(subject.poem_name).to match(/Os Lusiadas/) }
-    it { expect(subject.canto_name).to eq(canto.display_name) }
+    it { expect(subject.canto_name).to eq(canto.name) }
     it { expect(subject.stanza_number).to match(/Stanza 1/) }
 
     describe 'seperates the first letter of the word from the rest' do

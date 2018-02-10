@@ -3,7 +3,7 @@
 class LineReviewPresenter
   POEM_NAME = 'Os Lusiadas'
 
-  attr_reader :step
+  attr_reader :line, :step
 
   def initialize(line:, step: 0)
     @line = line
@@ -12,7 +12,7 @@ class LineReviewPresenter
   end
 
   def canto_name
-    @canto_name ||= stanza.canto.display_name
+    @canto_name ||= stanza.canto.name
   end
 
   def poem_name
@@ -30,8 +30,6 @@ class LineReviewPresenter
   end
 
   private
-
-  attr_reader :line
 
   def canto
     stanza.canto
