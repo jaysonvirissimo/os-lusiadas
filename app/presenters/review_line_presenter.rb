@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LineReviewPresenter
+class ReviewLinePresenter
   POEM_NAME = 'Os Lusiadas'
 
   attr_reader :line, :step

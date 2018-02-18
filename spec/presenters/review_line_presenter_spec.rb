@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe LineReviewPresenter do
+RSpec.describe ReviewLinePresenter do
   it { expect(described_class).to respond_to(:new) }
 
   context 'without specifying a step' do
@@ -32,7 +32,7 @@ RSpec.describe LineReviewPresenter do
     end
   end
 
-  describe LineReviewPresenter::WordPresenter do
+  describe ReviewLinePresenter::WordPresenter do
     let(:first_word) { Fabricate(:word, value: 'Um', position: 1) }
     let(:second_word) { Fabricate(:word, value: 'Dois', position: 2) }
     let(:instance) { described_class.new(word: word, step: step) }
