@@ -1,26 +1,12 @@
 # frozen_string_literal: true
 
 class ReviewLinePresenter
-  POEM_NAME = 'Os Lusiadas'
-
   attr_reader :line, :step
 
   def initialize(line:, step: 0)
     @line = line
     @step = step
     raise unless (0..5).cover?(step)
-  end
-
-  def canto_name
-    @canto_name ||= stanza.canto.name
-  end
-
-  def poem_name
-    POEM_NAME
-  end
-
-  def stanza_number
-    @stanza_number ||= "Stanza #{stanza.number}"
   end
 
   def words
@@ -30,14 +16,6 @@ class ReviewLinePresenter
   end
 
   private
-
-  def canto
-    stanza.canto
-  end
-
-  def stanza
-    line.stanza
-  end
 
   class WordPresenter
     attr_reader :position

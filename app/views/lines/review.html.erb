@@ -1,6 +1,12 @@
-<h1><%= @line_review_presenter.poem_name %></h1>
-<h2><%= @line_review_presenter.canto_name %></h2>
-<h3><%= @line_review_presenter.stanza_number %></h3>
-<% @line_review_presenter.words.each do |word| %>
-<%=  element_for(word) %>
+<h1><%= @review_presenter.poem_name %></h1>
+<h2><%= @review_presenter.canto_name %></h2>
+<h3><%= @review_presenter.stanza_number %></h3>
+<ul class='lines'>
+<% @review_presenter.lines.each do |line| %>
+  <li class='line'>
+    <% line.words.each do |word| %>
+      <%=  element_for(word) %>
+    <% end %>
+  </li>
 <% end %>
+</ul>

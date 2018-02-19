@@ -2,7 +2,7 @@
 
 class LinesController < ApplicationController
   def review
-    @line_review_presenter = ReviewLinePresenter.new(line: line)
+    @review_presenter = ReviewPresenter.new(line: line)
   end
 
   def test; end
