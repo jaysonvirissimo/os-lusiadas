@@ -3,14 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe ReviewPresenter do
+  let(:canto) { Fabricate(:canto) }
+  let(:stanza) { Fabricate(:stanza, canto: canto, number: 1) }
+  let(:line) { Fabricate(:line, stanza: stanza, number: 1, words: [word]) }
+  let(:word) { Fabricate(:word, value: 'Peixe', position: 1) }
+
   it { expect(described_class).to respond_to(:new) }
 
   context 'without specifying a step' do
-    let(:canto) { Fabricate(:canto) }
-    let(:stanza) { Fabricate(:stanza, canto: canto, number: 1) }
-    let(:line) { Fabricate(:line, stanza: stanza, number: 1, words: [word]) }
-    let(:word) { Fabricate(:word, value: 'Peixe', position: 1) }
-
     subject { described_class.new(line: line) }
 
     it { expect(subject).to respond_to(:step) }
@@ -21,6 +21,10 @@ RSpec.describe ReviewPresenter do
     it { expect(subject.canto_name).to eq(canto.name) }
     it { expect(subject.stanza_number).to match(/Stanza 1/) }
 
+    it 'does not have a back button' do
+      expect(subject.back_button.condition).to be(false)
+    end
+
     describe '#lines' do
       let!(:other_line) { Fabricate(:line, stanza: stanza, number: 2) }
 
@@ -30,6 +34,36 @@ RSpec.describe ReviewPresenter do
       it 'presents the non-review lines' do
         expect(subject.lines.last).to be_a(LinePresenter)
       end
+    end
+  end
+
+  context 'on step 1' do
+    subject { described_class.new(line: line, step: 1) }
+
+    describe '#back_button' do
+      it { expect(subject.back_button.condition).to be(true) }
+      it { expect(subject.back_button.options[:id]).to eq(line.id) }
+      it { expect(subject.back_button.options[:step]).to be_zero }
+    end
+
+    describe '#next_button' do
+      it { expect(subject.next_button.condition).to be(true) }
+      it { expect(subject.next_button.options[:id]).to eq(line.id) }
+      it { expect(subject.next_button.options[:step]).to eq(2) }
+    end
+  end
+
+  context 'on step 5' do
+    subject { described_class.new(line: line, step: 5) }
+
+    describe '#back_button' do
+      it { expect(subject.back_button.condition).to be(true) }
+      it { expect(subject.back_button.options[:id]).to eq(line.id) }
+      it { expect(subject.back_button.options[:step]).to eq(4) }
+    end
+
+    describe '#next_button' do
+      it { expect(subject.next_button.condition).to be(false) }
     end
   end
 end

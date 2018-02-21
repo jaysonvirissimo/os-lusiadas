@@ -10,3 +10,5 @@
   </li>
 <% end %>
 </ul>
+<%= link_to_if(@review_presenter.back_button.condition, @review_presenter.back_button.name, lines_review_url(@review_presenter.back_button.options)) %>
+<%= link_to_if(@review_presenter.next_button.condition, @review_presenter.next_button.name, lines_review_url(@review_presenter.next_button.options)) %>

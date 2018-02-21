@@ -2,7 +2,7 @@
 
 class LinesController < ApplicationController
   def review
-    @review_presenter = ReviewPresenter.new(line: line)
+    @review_presenter = ReviewPresenter.new(line: line, step: step.to_i)
   end
 
   def test; end
@@ -11,5 +11,9 @@ class LinesController < ApplicationController
 
   def line
     @line ||= Line.find(params[:id] || 1)
+  end
+
+  def step
+    params[:step] || 0
   end
 end

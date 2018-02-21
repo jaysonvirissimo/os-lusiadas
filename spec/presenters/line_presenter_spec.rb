@@ -16,7 +16,6 @@ RSpec.describe LinePresenter do
     describe 'seperates the first letter of the word from the rest' do
       let(:first_word) { subject.words.first }
 
-      it { expect(first_word).to respond_to(:display) }
       it { expect(first_word).to respond_to(:first) }
       it { expect(first_word).to respond_to(:rest) }
       it { expect(first_word).to respond_to(:position) }
@@ -31,7 +30,7 @@ RSpec.describe LinePresenter do
     let(:second_word) { Fabricate(:word, value: 'Dois', position: 2) }
     let(:instance) { described_class.new(word: word) }
 
-    it 'should display all the letters' do
+    xit 'should display all the letters' do
     end
   end
 end
