@@ -2,14 +2,14 @@
 
 class ReviewPresenter
   POEM_NAME = 'Os Lusiadas'
-  STEP_RANGE = (0..5)
+  VALID_STEPS = (0..5)
 
   attr_reader :line, :step
 
   def initialize(line:, step: 0)
     @line = line
     @step = step
-    raise unless (0..5).cover?(step)
+    raise unless VALID_STEPS.cover?(step)
   end
 
   def back_button
@@ -22,7 +22,7 @@ class ReviewPresenter
 
   def next_button
     @next_button ||= OpenStruct.new(
-      condition: STEP_RANGE.cover?(step + 1),
+      condition: VALID_STEPS.cover?(step + 1),
       name: 'Next',
       options: { id: line.id, step: step + 1 }
     )
