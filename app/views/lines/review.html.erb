@@ -5,7 +5,7 @@
 <% @review_presenter.lines.each do |line| %>
   <li class='line'>
     <% line.words.each do |word| %>
-      <%=  element_for(word) %>
+      <%=  review_word_html(word) %>
     <% end %>
   </li>
 <% end %>
