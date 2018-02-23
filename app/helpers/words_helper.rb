@@ -8,8 +8,8 @@ module WordsHelper
   class ReviewWordHTML
     include ActionView::Helpers
     MAKE_WORD_VISIBLE = %{
-      Array.prototype.forEach.call(this.children, function(el, i) {
-        el.style.opacity = 1.0;
+      Array.prototype.forEach.call(this.children, function(element, i) {
+        element.style.opacity = 1.0;
       });
     }.delete(' ').freeze
     VISIBILITY = { true => 'opacity: 1.0;', false => 'opacity: 0.0;' }.freeze
@@ -20,15 +20,34 @@ module WordsHelper
     end
 
     def html
-      content_tag(:span, inner_html, class: 'word', onclick: MAKE_WORD_VISIBLE)
+      content_tag(
+        :span,
+        inner_html,
+        class: klass,
+        onclick: MAKE_WORD_VISIBLE
+      )
     end
 
     private
 
     attr_reader :first, :rest
 
+    def klass
+      if interesting?
+        'tag is-light is-medium word'
+      else
+        'word'
+      end
+    end
+
     def inner_html
       first_html.concat(rest_html)
+    end
+
+    def interesting?
+      return true unless first.visible
+      return false if rest.value.blank?
+      !rest.visible
     end
 
     def first_html
