@@ -40,6 +40,7 @@
         <%= link_to(@review_presenter.reset_button.name, lines_review_url(@review_presenter.reset_button.options), class: 'card-footer-item') if @review_presenter.reset_button.condition? %>
         <%= link_to(@review_presenter.back_button.name, lines_review_url(@review_presenter.back_button.options), class: 'card-footer-item') if @review_presenter.back_button.condition? %>
         <%= link_to(@review_presenter.next_button.name, lines_review_url(@review_presenter.next_button.options), class: 'card-footer-item') if @review_presenter.next_button.condition? %>
+        <%= link_to(@review_presenter.done_button.name, lines_review_url(@review_presenter.done_button.options), class: 'card-footer-item') if @review_presenter.done_button.condition? %>
       </footer>
     </div>
   </section>

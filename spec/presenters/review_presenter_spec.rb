@@ -25,8 +25,12 @@ RSpec.describe ReviewPresenter do
       expect(subject.back_button).to_not be_condition
     end
 
-    it 'does not has a reset button' do
+    it 'does not have a reset button' do
       expect(subject.reset_button).to_not be_condition
+    end
+
+    it 'does not have a done button' do
+      expect(subject.done_button).to_not be_condition
     end
 
     describe '#lines' do
@@ -80,6 +84,15 @@ RSpec.describe ReviewPresenter do
 
     describe '#next_button' do
       it { expect(subject.next_button).to_not be_condition }
+    end
+
+    describe '#done_button' do
+      let!(:next_stanza) { Fabricate(:stanza, canto: canto, number: 2) }
+      let!(:next_line) { Fabricate(:line, number: 1, stanza: next_stanza) }
+
+      it { expect(subject.done_button).to be_condition }
+      it { expect(subject.done_button.options[:id]).to eq(next_line.id) }
+      it { expect(subject.done_button.options[:step]).to be_zero }
     end
   end
 end

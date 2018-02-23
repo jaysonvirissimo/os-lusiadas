@@ -20,6 +20,15 @@ class ReviewPresenter
     )
   end
 
+  # TODO: Change done button to go test of memorization, instead of next review.
+  def done_button
+    @done_button ||= OpenStruct.new(
+      condition?: step == VALID_STEPS.last && next_line,
+      name: 'Done',
+      options: { id: next_line&.id, step: 0 }
+    )
+  end
+
   def next_button
     @next_button ||= OpenStruct.new(
       condition?: VALID_STEPS.cover?(step + 1),
@@ -66,5 +75,9 @@ class ReviewPresenter
 
   def canto
     stanza.canto
+  end
+
+  def next_line
+    @next_line ||= line.next_line
   end
 end
