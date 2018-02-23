@@ -22,7 +22,11 @@ RSpec.describe ReviewPresenter do
     it { expect(subject.stanza_number).to match(/Stanza 1/) }
 
     it 'does not have a back button' do
-      expect(subject.back_button.condition).to be(false)
+      expect(subject.back_button).to_not be_condition
+    end
+
+    it 'does not has a reset button' do
+      expect(subject.reset_button).to_not be_condition
     end
 
     describe '#lines' do
@@ -40,14 +44,20 @@ RSpec.describe ReviewPresenter do
   context 'on step 1' do
     subject { described_class.new(line: line, step: 1) }
 
+    describe '#reset_button' do
+      it { expect(subject.reset_button).to be_condition }
+      it { expect(subject.reset_button.options[:id]).to eq(line.id) }
+      it { expect(subject.reset_button.options[:step]).to be_zero }
+    end
+
     describe '#back_button' do
-      it { expect(subject.back_button.condition).to be(true) }
+      it { expect(subject.back_button).to be_condition }
       it { expect(subject.back_button.options[:id]).to eq(line.id) }
       it { expect(subject.back_button.options[:step]).to be_zero }
     end
 
     describe '#next_button' do
-      it { expect(subject.next_button.condition).to be(true) }
+      it { expect(subject.next_button).to be_condition }
       it { expect(subject.next_button.options[:id]).to eq(line.id) }
       it { expect(subject.next_button.options[:step]).to eq(2) }
     end
@@ -56,14 +66,20 @@ RSpec.describe ReviewPresenter do
   context 'on step 5' do
     subject { described_class.new(line: line, step: 5) }
 
+    describe '#reset_button' do
+      it { expect(subject.reset_button).to be_condition }
+      it { expect(subject.reset_button.options[:id]).to eq(line.id) }
+      it { expect(subject.reset_button.options[:step]).to be_zero }
+    end
+
     describe '#back_button' do
-      it { expect(subject.back_button.condition).to be(true) }
+      it { expect(subject.back_button).to be_condition }
       it { expect(subject.back_button.options[:id]).to eq(line.id) }
       it { expect(subject.back_button.options[:step]).to eq(4) }
     end
 
     describe '#next_button' do
-      it { expect(subject.next_button.condition).to be(false) }
+      it { expect(subject.next_button).to_not be_condition }
     end
   end
 end

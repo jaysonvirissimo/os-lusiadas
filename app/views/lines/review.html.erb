@@ -1,14 +1,46 @@
-<h1><%= @review_presenter.poem_name %></h1>
-<h2><%= @review_presenter.canto_name %></h2>
-<h3><%= @review_presenter.stanza_number %></h3>
-<ul class='lines'>
-<% @review_presenter.lines.each do |line| %>
-  <li class='line'>
-    <% line.words.each do |word| %>
-      <%=  review_word_html(word) %>
-    <% end %>
-  </li>
-<% end %>
-</ul>
-<%= link_to_if(@review_presenter.back_button.condition, @review_presenter.back_button.name, lines_review_url(@review_presenter.back_button.options)) %>
-<%= link_to_if(@review_presenter.next_button.condition, @review_presenter.next_button.name, lines_review_url(@review_presenter.next_button.options)) %>
+<div class='container'>
+  <section class="hero" id='poem-info'>
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          <%= @review_presenter.poem_name %>
+        </h1>
+        <h2 class="subtitle">
+          <%= @review_presenter.canto_name %>
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class='level-item' id='poem-review'>
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          <%= @review_presenter.stanza_number %>
+        </p>
+        <a href="#" class="card-header-icon" aria-label="more options">
+          <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </a>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <ul class='lines'>
+            <% @review_presenter.lines.each do |line| %>
+              <li class='line'>
+                <% line.words.each do |word| %>
+                  <%=  review_word_html(word) %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <footer class="card-footer">
+        <%= link_to(@review_presenter.reset_button.name, lines_review_url(@review_presenter.reset_button.options), class: 'card-footer-item') if @review_presenter.reset_button.condition? %>
+        <%= link_to(@review_presenter.back_button.name, lines_review_url(@review_presenter.back_button.options), class: 'card-footer-item') if @review_presenter.back_button.condition? %>
+        <%= link_to(@review_presenter.next_button.name, lines_review_url(@review_presenter.next_button.options), class: 'card-footer-item') if @review_presenter.next_button.condition? %>
+      </footer>
+    </div>
+  </section>
+<div>

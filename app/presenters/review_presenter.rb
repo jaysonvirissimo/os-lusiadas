@@ -14,7 +14,7 @@ class ReviewPresenter
 
   def back_button
     @back_button ||= OpenStruct.new(
-      condition: step.positive?,
+      condition?: step.positive?,
       name: 'Back',
       options: { id: line.id, step: step - 1 }
     )
@@ -22,9 +22,17 @@ class ReviewPresenter
 
   def next_button
     @next_button ||= OpenStruct.new(
-      condition: VALID_STEPS.cover?(step + 1),
+      condition?: VALID_STEPS.cover?(step + 1),
       name: 'Next',
       options: { id: line.id, step: step + 1 }
+    )
+  end
+
+  def reset_button
+    @reset_button ||= OpenStruct.new(
+      condition?: step != 0,
+      name: 'Reset',
+      options: { id: line.id, step: 0 }
     )
   end
 
