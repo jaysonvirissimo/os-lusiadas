@@ -7,6 +7,10 @@ class LinePresenter
     @line = line
   end
 
+  def classes
+    'lines'
+  end
+
   def words
     @words ||= line.words.order(:position).map do |word|
       WordPresenter.new(word: word)

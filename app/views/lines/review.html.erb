@@ -27,7 +27,7 @@
         <div class="content">
           <ul class='lines'>
             <% @review_presenter.lines.each do |line| %>
-              <li class='line'>
+              <li class="<%= line.classes %>">
                 <% line.words.each do |word| %>
                   <%=  review_word_html(word) %>
                 <% end %>

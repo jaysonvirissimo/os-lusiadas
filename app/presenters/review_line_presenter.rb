@@ -9,6 +9,10 @@ class ReviewLinePresenter
     raise unless (0..5).cover?(step)
   end
 
+  def classes
+    'lines has-text-weight-semibold'
+  end
+
   def words
     @words ||= line.words.order(:position).map do |word|
       WordPresenter.new(word: word, step: step)
