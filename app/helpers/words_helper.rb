@@ -7,11 +7,7 @@ module WordsHelper
 
   class ReviewWordHTML
     include ActionView::Helpers
-    MAKE_WORD_VISIBLE = %{
-      Array.prototype.forEach.call(this.children, function(element, i) {
-        element.style.opacity = 1.0;
-      });
-    }.delete(' ').freeze
+    MAKE_WORD_VISIBLE = 'makeVisible(this);'
     VISIBILITY = { true => 'opacity: 1.0;', false => 'opacity: 0.0;' }.freeze
 
     def initialize(word)

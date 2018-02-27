@@ -44,4 +44,11 @@
       </footer>
     </div>
   </section>
-<div>
+</div>
+<script>
+var makeVisible = function(that) {
+  Array.prototype.forEach.call(that.children, function(element, i) {
+    element.style.opacity = 1.0;
+  });
+};
+</script>
