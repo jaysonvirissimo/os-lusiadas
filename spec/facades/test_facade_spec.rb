@@ -18,7 +18,7 @@ RSpec.describe TestFacade do
       expect(subject.lines.first).to be_a(TestLinePresenter)
     end
     it 'presents the non-test lines' do
-      expect(subject.lines.last).to be_a(LinePresenter)
+      expect(subject.lines.last).to be_a(LineDecorator)
     end
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LinePresenter
+class LineDecorator
   attr_reader :line
 
   def initialize(line)

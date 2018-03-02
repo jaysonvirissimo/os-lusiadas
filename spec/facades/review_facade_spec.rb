@@ -40,7 +40,7 @@ RSpec.describe ReviewFacade do
         expect(subject.lines.first).to be_a(ReviewLinePresenter)
       end
       it 'presents the non-review lines' do
-        expect(subject.lines.last).to be_a(LinePresenter)
+        expect(subject.lines.last).to be_a(LineDecorator)
       end
     end
   end

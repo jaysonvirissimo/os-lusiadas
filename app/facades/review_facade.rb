@@ -62,7 +62,7 @@ class ReviewFacade
       if current_line == line
         ReviewLinePresenter.new(line: current_line, step: step)
       else
-        LinePresenter.new(current_line)
+        LineDecorator.new(current_line)
       end
     end
   end
