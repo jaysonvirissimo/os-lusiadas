@@ -13,7 +13,7 @@ class TestFacade
   def lines
     @lines ||= stanza.lines.order(:number).map do |current_line|
       if current_line == line
-        TestLinePresenter.new(current_line)
+        TestLineDecorator.new(current_line)
       else
         LineDecorator.new(current_line)
       end

@@ -2,5 +2,5 @@
 
 require 'rails_helper'
 
-RSpec.describe TestLinePresenter do
+RSpec.describe TestLineDecorator do
 end

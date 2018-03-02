@@ -1,4 +1,4 @@
-class TestLinePresenter
+class TestLineDecorator
   def initialize(line)
     @line = line
   end

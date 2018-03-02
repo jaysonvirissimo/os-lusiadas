@@ -15,7 +15,7 @@ RSpec.describe TestFacade do
     let!(:other_line) { Fabricate(:line, stanza: stanza, number: 2) }
 
     it 'presents the test line' do
-      expect(subject.lines.first).to be_a(TestLinePresenter)
+      expect(subject.lines.first).to be_a(TestLineDecorator)
     end
     it 'presents the non-test lines' do
       expect(subject.lines.last).to be_a(LineDecorator)
