@@ -3,12 +3,12 @@
 class LinePresenter
   attr_reader :line
 
-  def initialize(line:)
+  def initialize(line)
     @line = line
   end
 
   def classes
-    'lines'
+    'line'
   end
 
   def words
@@ -20,11 +20,16 @@ class LinePresenter
   private
 
   class WordPresenter
-    attr_reader :position
+    attr_reader :id, :position
 
     def initialize(word:)
       @characters = word.value.chars
+      @id = word.id
       @position = word.position
+    end
+
+    def classes
+      'word'
     end
 
     def first

@@ -2,15 +2,17 @@
 
 class LinesController < ApplicationController
   def review
-    @review_presenter = ReviewPresenter.new(line: line, step: step.to_i)
+    @review_facade = ReviewFacade.new(line: line, step: step.to_i)
   end
 
-  def test; end
+  def test
+    @test_facade = TestFacade.new(line)
+  end
 
   private
 
   def line
-    @line ||= Line.find(params[:id] || 1)
+    @line ||= Line.find_by(number: params[:number] || 1)
   end
 
   def step

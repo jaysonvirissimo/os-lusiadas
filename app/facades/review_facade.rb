@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ReviewPresenter
+class ReviewFacade
   POEM_NAME = 'Os Lusiadas'
   VALID_STEPS = (0..5)
 
@@ -25,7 +25,7 @@ class ReviewPresenter
     @done_button ||= OpenStruct.new(
       condition?: step == VALID_STEPS.last && next_line,
       name: 'Done',
-      options: { id: next_line&.id, step: 0 }
+      options: { number: next_line&.number, step: 0 }
     )
   end
 
@@ -62,7 +62,7 @@ class ReviewPresenter
       if current_line == line
         ReviewLinePresenter.new(line: current_line, step: step)
       else
-        LinePresenter.new(line: current_line)
+        LinePresenter.new(current_line)
       end
     end
   end

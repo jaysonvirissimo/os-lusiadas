@@ -11,7 +11,7 @@ RSpec.describe LinePresenter do
     let(:line) { Fabricate(:line, stanza: stanza, words: [word]) }
     let(:word) { Fabricate(:word, value: 'Peixe', position: 1) }
 
-    subject { described_class.new(line: line) }
+    subject { described_class.new(line) }
 
     describe 'seperates the first letter of the word from the rest' do
       let(:first_word) { subject.words.first }

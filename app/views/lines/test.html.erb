@@ -1,2 +1,41 @@
-<h1>Lines#test</h1>
-<p>Find me in app/views/lines/test.html.erb</p>
+<div class='container'>
+  <section class="hero" id='poem-info'>
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          <%= @test_facade.poem_name %>
+        </h1>
+        <h2 class="subtitle">
+          <%= @test_facade.canto_name %>
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section class='level-item' id='poem-review'>
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          <%= @test_facade.stanza_number %>
+        </p>
+        <a href="#" class="card-header-icon" aria-label="more options">
+          <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </a>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <ul class='lines'>
+            <% @test_facade.lines.each do |line| %>
+              <li class="<%= line.classes %>">
+                <% line.words.each do |word| %>
+                  <%=  test_word_html(word) %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

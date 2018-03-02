@@ -10,7 +10,7 @@ class ReviewLinePresenter
   end
 
   def classes
-    'lines has-text-weight-semibold'
+    'line has-text-weight-semibold'
   end
 
   def words

@@ -5,6 +5,10 @@ module WordsHelper
     ReviewWordHTML.new(word).html
   end
 
+  def test_word_html(word)
+    TestWordHTML.new(word).html
+  end
+
   class ReviewWordHTML
     include ActionView::Helpers
     MAKE_WORD_VISIBLE = 'makeVisible(this);'
@@ -19,7 +23,7 @@ module WordsHelper
       content_tag(
         :span,
         inner_html,
-        class: klass,
+        class: classes,
         onclick: MAKE_WORD_VISIBLE
       )
     end
@@ -28,7 +32,7 @@ module WordsHelper
 
     attr_reader :first, :rest
 
-    def klass
+    def classes
       if interesting?
         'tag is-light is-medium word'
       else
@@ -52,6 +56,27 @@ module WordsHelper
 
     def rest_html
       content_tag(:span, rest.value, style: VISIBILITY[rest.visible])
+    end
+  end
+
+  class TestWordHTML
+    include ActionView::Helpers
+
+    def initialize(word)
+      @word = word
+    end
+
+    def html
+      text_field_tag(class: word.classes, data: { word_id: word.id })
+    end
+
+    private
+
+    attr_reader :word
+    
+    def style
+
+
     end
   end
 end

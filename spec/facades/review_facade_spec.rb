@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ReviewPresenter do
+RSpec.describe ReviewFacade do
   let(:canto) { Fabricate(:canto) }
   let(:stanza) { Fabricate(:stanza, canto: canto, number: 1) }
   let(:line) { Fabricate(:line, stanza: stanza, number: 1, words: [word]) }
@@ -88,10 +88,11 @@ RSpec.describe ReviewPresenter do
 
     describe '#done_button' do
       let!(:next_stanza) { Fabricate(:stanza, canto: canto, number: 2) }
-      let!(:next_line) { Fabricate(:line, number: 1, stanza: next_stanza) }
+      let!(:next_line) { Fabricate(:line, number: number, stanza: next_stanza) }
+      let(:number) { 1 }
 
       it { expect(subject.done_button).to be_condition }
-      it { expect(subject.done_button.options[:id]).to eq(next_line.id) }
+      it { expect(subject.done_button.options[:number]).to eq(number) }
       it { expect(subject.done_button.options[:step]).to be_zero }
     end
   end
