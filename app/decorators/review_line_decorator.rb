@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ReviewLinePresenter
+class ReviewLineDecorator
   attr_reader :line, :step
 
   def initialize(line:, step: 0)

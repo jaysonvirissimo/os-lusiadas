@@ -60,7 +60,7 @@ class ReviewFacade
   def lines
     @lines ||= stanza.lines.order(:number).map do |current_line|
       if current_line == line
-        ReviewLinePresenter.new(line: current_line, step: step)
+        ReviewLineDecorator.new(line: current_line, step: step)
       else
         LineDecorator.new(current_line)
       end
