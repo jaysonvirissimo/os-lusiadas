@@ -30,6 +30,10 @@ class ReviewLineDecorator
       @step = step
     end
 
+    def present_html
+      ReviewWordPresenter.new(self).html
+    end
+
     def first
       @first ||= OpenStruct.new(
         value: characters.take(1).join,

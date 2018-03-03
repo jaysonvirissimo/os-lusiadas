@@ -29,7 +29,7 @@
             <% @review_facade.lines.each do |line| %>
               <li class="<%= line.classes %>">
                 <% line.words.each do |word| %>
-                  <%=  review_word_html(word) %>
+                  <%=  word.present_html %>
                 <% end %>
               </li>
             <% end %>

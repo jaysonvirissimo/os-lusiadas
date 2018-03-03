@@ -28,6 +28,10 @@ class LineDecorator
       @position = word.position
     end
 
+    def present
+      ReviewWordPresenter.new(self).html
+    end
+
     def classes
       'word'
     end
