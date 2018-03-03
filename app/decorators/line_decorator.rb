@@ -13,13 +13,13 @@ class LineDecorator
 
   def words
     @words ||= line.words.order(:position).map do |word|
-      WordPresenter.new(word: word)
+      WordDecorator.new(word: word)
     end
   end
 
   private
 
-  class WordPresenter
+  class WordDecorator
     attr_reader :id, :position
 
     def initialize(word:)

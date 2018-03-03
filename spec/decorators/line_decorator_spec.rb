@@ -25,7 +25,7 @@ RSpec.describe LineDecorator do
     end
   end
 
-  describe LineDecorator::WordPresenter do
+  describe LineDecorator::WordDecorator do
     let(:first_word) { Fabricate(:word, value: 'Um', position: 1) }
     let(:second_word) { Fabricate(:word, value: 'Dois', position: 2) }
     let(:instance) { described_class.new(word: word) }

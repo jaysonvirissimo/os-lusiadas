@@ -15,13 +15,13 @@ class ReviewLineDecorator
 
   def words
     @words ||= line.words.order(:position).map do |word|
-      WordPresenter.new(word: word, step: step)
+      WordDecorator.new(word: word, step: step)
     end
   end
 
   private
 
-  class WordPresenter
+  class WordDecorator
     attr_reader :position
 
     def initialize(word:, step:)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestLineDecorator
   def initialize(line)
     @line = line
@@ -9,7 +11,7 @@ class TestLineDecorator
 
   def words
     @words ||= line.words.order(:position).map do |word|
-      WordPresenter.new(word)
+      WordDecorator.new(word)
     end
   end
 
@@ -17,7 +19,7 @@ class TestLineDecorator
 
   attr_reader :line
 
-  class WordPresenter
+  class WordDecorator
     def initialize(word)
       @word = word
     end

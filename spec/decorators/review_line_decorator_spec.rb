@@ -26,7 +26,7 @@ RSpec.describe ReviewLineDecorator do
     end
   end
 
-  describe ReviewLineDecorator::WordPresenter do
+  describe ReviewLineDecorator::WordDecorator do
     let(:first_word) { Fabricate(:word, value: 'Um', position: 1) }
     let(:second_word) { Fabricate(:word, value: 'Dois', position: 2) }
     let(:instance) { described_class.new(word: word, step: step) }
