@@ -19,21 +19,13 @@ class TestLineDecorator
 
   attr_reader :line
 
-  class WordDecorator
-    def initialize(word)
-      @word = word
-    end
-
+  class WordDecorator < SimpleDelegator
     def classes
       'word'
     end
 
-    def id
-      word.id
+    def present_html
+      TestWordPresenter.new(self).html
     end
-
-    private
-
-    attr_reader :word
   end
 end

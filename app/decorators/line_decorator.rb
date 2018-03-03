@@ -18,6 +18,10 @@ class LineDecorator
   end
 
   class WordDecorator < SimpleDelegator
+    def classes
+      'word'
+    end
+
     def present_html
       WordPresenter.new(self).html
     end
