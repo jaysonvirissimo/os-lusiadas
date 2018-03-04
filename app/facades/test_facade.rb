@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TestFacade
   POEM_NAME = 'Os Lusiadas'
   attr_reader :line
@@ -25,7 +27,7 @@ class TestFacade
   end
 
   def stanza_number
-    stanza.number
+    "Stanza #{stanza.number}"
   end
 
   private
