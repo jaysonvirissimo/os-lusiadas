@@ -10,8 +10,8 @@ class TestLineDecorator
   end
 
   def words
-    @words ||= line.words.order(:position).map do |word|
-      WordDecorator.new(word)
+    @words ||= line.words.order(:position).map.with_index do |word, index|
+      WordDecorator.new(word: word, disabled: index.positive?)
     end
   end
 
@@ -20,6 +20,13 @@ class TestLineDecorator
   attr_reader :line
 
   class WordDecorator < SimpleDelegator
+    attr_reader :disabled
+
+    def initialize(word:, disabled:)
+      @disabled = disabled
+      super(word)
+    end
+
     def classes
       'word'
     end

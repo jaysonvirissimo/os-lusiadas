@@ -39,3 +39,20 @@
     </div>
   </section>
 </div>
+<script>
+(function () {
+  document.body.onkeyup = function(event){
+    var spacebar = 32;
+    if (event.keyCode == spacebar) {
+      var inputs = [].slice.call(document.querySelectorAll('.line input'));
+      var enabledInput = undefined;
+      for (var i = 0; i < inputs.length; i++) {
+        if (!inputs[i].getAttribute('disabled')) {
+          enabledInput = inputs[i];
+        }
+      }
+      submitGuess(enabledInput);
+    }
+  }
+})();
+</script>

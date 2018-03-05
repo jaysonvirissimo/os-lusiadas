@@ -11,8 +11,7 @@ var toParams = function(object) {
 };
 
 var submitGuess = function(input) {
-  // TODO: Fire on spacebar hit with data from current word input element.
-  var data = { word_id: 1, guess: 'thing' };
+  var data = { word_id: input.getAttribute('id'), guess: input.value };
   var request = new XMLHttpRequest();
   request.open('POST', '/words/score', true);
   request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
