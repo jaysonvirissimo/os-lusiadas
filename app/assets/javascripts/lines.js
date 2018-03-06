@@ -22,6 +22,7 @@ var setInputData = function(input, response) {
   } else {
     input.classList.add('is-danger');
   }
+  // TODO: Enabled and focus next input.
 };
 
 var submitGuess = function(input) {
@@ -39,5 +40,4 @@ var submitGuess = function(input) {
     }
   };
   request.send(toParams(data));
-  // TODO: Indicate if guess was correct with input element styles.
 };
