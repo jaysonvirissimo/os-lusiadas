@@ -38,7 +38,8 @@ class TestWordPresenter
       size: size,
       class: input_classes,
       data: data,
-      disabled: word.disabled
+      disabled: word.disabled,
+      autofocus: !word.disabled
     )
   end
 
