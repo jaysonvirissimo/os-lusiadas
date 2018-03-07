@@ -21,8 +21,6 @@ var readyNextInput = function(previousInput) {
     var nextInput = nextField.children[0].children[0];
     nextInput.removeAttribute('disabled');
     nextInput.focus();
-  } else {
-    // TODO: Activate button to review next line.
   }
 };
 
@@ -36,6 +34,10 @@ var toParams = function(object) {
   return Object.keys(object).map(function(key) {
     return encodeURIComponent(key) + '=' + encodeURIComponent(object[key])
   }).join('&');
+};
+
+var reviewNextLine = function() {
+  window.location = document.getElementById('next-button').getAttribute('href');
 };
 
 var setInputData = function(input, response) {
@@ -57,7 +59,6 @@ var submitGuess = function(input) {
     if (request.status >= 200 && request.status < 400) {
       var response = JSON.parse(request.responseText);
       setInputData(input, response);
-      console.log(response);
     } else {
      console.log('Something went wrong...');
     }

@@ -22,6 +22,26 @@ class TestFacade
     end
   end
 
+  def next_button
+    @next_button ||= OpenStruct.new(
+      classes: 'card-footer-item',
+      condition?: true,
+      id: 'next-button',
+      name: 'Review Next',
+      options: { number: line.next_line.id, step: 0 }
+    )
+  end
+
+  def retry_button
+    @reset_button ||= OpenStruct.new(
+      classes: 'card-footer-item',
+      condition?: true,
+      id: 'retry-button',
+      name: 'Retry Test',
+      options: { id: line.id }
+    )
+  end
+
   def poem_name
     POEM_NAME
   end
