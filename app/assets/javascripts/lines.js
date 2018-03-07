@@ -2,6 +2,30 @@ var goodRequest = function(request) {
   return request.status >= 200 && request.status < 400
 };
 
+var findNextEnabledInput = function() {
+  var inputs = [].slice.call(document.querySelectorAll('.line input'));
+  for (var i = 0; i < inputs.length; i++) {
+    if (!inputs[i].getAttribute('disabled')) {
+      return inputs[i];
+    }
+  }
+};
+
+var findNextField = function(previousInput) {
+  return previousInput.parentNode.parentNode.nextElementSibling;
+};
+
+var readyNextInput = function(previousInput) {
+  var nextField = findNextField(previousInput);
+  if (nextField) {
+    var nextInput = nextField.children[0].children[0];
+    nextInput.removeAttribute('disabled');
+    nextInput.focus();
+  } else {
+    // TODO: Activate button to review next line.
+  }
+};
+
 var makeVisible = function(parent) {
   Array.prototype.forEach.call(parent.children, function(element, index) {
     element.style.opacity = 1.0;
@@ -22,7 +46,6 @@ var setInputData = function(input, response) {
   } else {
     input.classList.add('is-danger');
   }
-  // TODO: Enabled and focus next input.
 };
 
 var submitGuess = function(input) {
