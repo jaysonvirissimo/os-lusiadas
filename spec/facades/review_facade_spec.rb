@@ -92,7 +92,7 @@ RSpec.describe ReviewFacade do
       let(:number) { 1 }
 
       it { expect(subject.done_button).to be_condition }
-      it { expect(subject.done_button.options[:number]).to eq(number) }
+      it { expect(subject.done_button.options).to have_key(:id) }
     end
   end
 end

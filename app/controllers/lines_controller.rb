@@ -12,7 +12,7 @@ class LinesController < ApplicationController
   private
 
   def line
-    @line ||= Line.find_by(number: params[:number] || 1)
+    @line ||= Line.find_by(id: params[:id]) || Line.first
   end
 
   def step

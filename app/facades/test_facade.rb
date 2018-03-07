@@ -28,7 +28,7 @@ class TestFacade
       condition?: true,
       id: 'next-button',
       name: 'Review Next',
-      options: { number: line.next_line.id, step: 0 }
+      options: { id: line.next_line.id, step: 0 }
     )
   end
 

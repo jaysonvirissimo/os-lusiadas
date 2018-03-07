@@ -24,7 +24,7 @@ class ReviewFacade
     @done_button ||= OpenStruct.new(
       condition?: step == VALID_STEPS.last && next_line,
       name: 'Done',
-      options: { number: line.number }
+      options: { id: line.id }
     )
   end
 
