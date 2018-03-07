@@ -93,7 +93,6 @@ RSpec.describe ReviewFacade do
 
       it { expect(subject.done_button).to be_condition }
       it { expect(subject.done_button.options[:number]).to eq(number) }
-      it { expect(subject.done_button.options[:step]).to be_zero }
     end
   end
 end

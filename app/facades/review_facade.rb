@@ -20,12 +20,11 @@ class ReviewFacade
     )
   end
 
-  # TODO: Change done button to go test of memorization, instead of next review.
   def done_button
     @done_button ||= OpenStruct.new(
       condition?: step == VALID_STEPS.last && next_line,
       name: 'Done',
-      options: { number: next_line&.number, step: 0 }
+      options: { number: line.number }
     )
   end
 
