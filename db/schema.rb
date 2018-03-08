@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109014239) do
+ActiveRecord::Schema.define(version: 20180308060441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authem_sessions", force: :cascade do |t|
+    t.string "role", null: false
+    t.string "subject_type", null: false
+    t.bigint "subject_id", null: false
+    t.string "token", limit: 60, null: false
+    t.datetime "expires_at", null: false
+    t.integer "ttl", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expires_at", "subject_type", "subject_id"], name: "index_authem_sessions_subject"
+    t.index ["expires_at", "token"], name: "index_authem_sessions_on_expires_at_and_token", unique: true
+    t.index ["subject_type", "subject_id"], name: "index_authem_sessions_on_subject_type_and_subject_id"
+  end
 
   create_table "cantos", force: :cascade do |t|
     t.integer "number"
@@ -36,6 +50,15 @@ ActiveRecord::Schema.define(version: 20180109014239) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["canto_id"], name: "index_stanzas_on_canto_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "name", null: false
+    t.string "password_digest", null: false
+    t.string "password_reset_token", limit: 60, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "words", force: :cascade do |t|
