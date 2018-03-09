@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   get 'lines/review'
   get 'lines/test'
   post 'words/score'
+
+  resources :users
+  resources :sessions, only: [:create, :destroy, :new]
 end
