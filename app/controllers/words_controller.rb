@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class WordsController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:score]
+  skip_before_action :verify_authenticity_token, only: [:score]
 
   def score
     if word.present?

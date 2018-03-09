@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    # TODO: Allow users to delete their accounts.
+  end
+
   def new
     @user = User.new
   end
@@ -24,6 +28,10 @@ class UsersController < ApplicationController
     else
       redirect_to(root_url)
     end
+  end
+
+  def update
+    # TODO: Allow users to edit their data.
   end
 
   private
