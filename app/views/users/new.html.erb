@@ -1,0 +1,11 @@
+<%= form_for(@user) do |form| %>
+  <%= form.label :name, class: 'label' %>
+  <%= form.text_field :name, class: 'input' %>
+  <%= form.label :email, class: 'label' %>
+  <%= form.email_field :email, class: 'input' %>
+  <%= form.label :password, class: 'label' %>
+  <%= form.password_field :password, class: 'input' %>
+  <%= form.label :password_confirmation, class: 'label' %>
+  <%= form.password_field :password_confirmation, class: 'input' %>
+  <%= form.submit %>
+<% end %>
