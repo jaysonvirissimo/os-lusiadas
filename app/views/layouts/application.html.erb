@@ -7,8 +7,20 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <%= link_to('Os Lusiadas', root_path, class: 'navbar-item') %>
+        <%= link_to('Review', lines_review_path, class: 'navbar-item') %>
+        <%= link_to('Sign Up', new_user_path, class: 'navbar-item') %>
+        <%= link_to('Sign In', new_session_path, class: 'navbar-item') %>
+        <div class="navbar-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
     <div class='container'>
       <%= yield %>
     </div>
