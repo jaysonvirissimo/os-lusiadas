@@ -18,9 +18,19 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    if authorized?
+      render :show
+    else
+      redirect_to(root_url)
+    end
   end
 
   private
+
+  def authorized?
+    current_user == @user
+  end
 
   def user_params
     params
