@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308060441) do
+ActiveRecord::Schema.define(version: 20180310064904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,28 @@ ActiveRecord::Schema.define(version: 20180308060441) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["stanza_id"], name: "index_lines_on_stanza_id"
+  end
+
+  create_table "okubo_decks", id: :serial, force: :cascade do |t|
+    t.string "user_type"
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id", "user_type"], name: "index_okubo_decks_on_user_id_and_user_type"
+  end
+
+  create_table "okubo_items", id: :serial, force: :cascade do |t|
+    t.integer "deck_id"
+    t.string "source_type"
+    t.integer "source_id"
+    t.integer "box", default: 0
+    t.datetime "last_reviewed"
+    t.datetime "next_review"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "times_right", default: 0
+    t.integer "times_wrong", default: 0
+    t.index ["source_id", "source_type"], name: "index_okubo_items_on_source_id_and_source_type"
   end
 
   create_table "stanzas", force: :cascade do |t|
