@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
     let(:existing_user) { Fabricate(:user, email: email) }
 
     it 'does not allow another user with the same email' do
-      existing_user and instance.save
+      existing_user && instance.save
       expect(instance).to_not be_valid
     end
   end

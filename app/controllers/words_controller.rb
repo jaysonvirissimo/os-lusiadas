@@ -5,7 +5,7 @@ class WordsController < ApplicationController
 
   def score
     if word.present?
-      render json: { correct: correct?, word_value: word.value }
+      render json: outcome
     else
       head :not_found
     end
@@ -13,8 +13,17 @@ class WordsController < ApplicationController
 
   private
 
-  def correct?
-    word.match(params[:guess])
+  def guess
+    params[:guess]
+  end
+
+  def outcome
+    UserGuessRecorder.new(guess: guess, user: user, word: word).call
+  end
+
+  def user
+    return current_user if current_user.present?
+    NullUser.new
   end
 
   def word
