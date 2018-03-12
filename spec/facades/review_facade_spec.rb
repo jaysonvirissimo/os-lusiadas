@@ -5,7 +5,9 @@ require 'rails_helper'
 RSpec.describe ReviewFacade do
   let(:canto) { Fabricate(:canto) }
   let(:stanza) { Fabricate(:stanza, canto: canto, number: 1) }
-  let(:line) { Fabricate(:line, stanza: stanza, number: 1, words: [word]) }
+  let(:line) do
+    Fabricate(:line, stanza: stanza, number: 1, absolute_number: 1, words: [word])
+  end
   let(:word) { Fabricate(:word, value: 'Peixe', position: 1) }
 
   it { expect(described_class).to respond_to(:new) }
@@ -88,7 +90,9 @@ RSpec.describe ReviewFacade do
 
     describe '#done_button' do
       let!(:next_stanza) { Fabricate(:stanza, canto: canto, number: 2) }
-      let!(:next_line) { Fabricate(:line, number: number, stanza: next_stanza) }
+      let!(:next_line) do
+        Fabricate(:line, number: number, absolute_number: 2, stanza: next_stanza)
+      end
       let(:number) { 1 }
 
       it { expect(subject.done_button).to be_condition }

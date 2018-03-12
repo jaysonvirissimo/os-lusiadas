@@ -5,11 +5,6 @@ class Line < ApplicationRecord
   has_many :words
 
   def next_line
-    self.class.find_by(number: number + 1, stanza: stanza) ||
-      self.class.find_by(number: 1, stanza: next_stanza)
-  end
-
-  def next_stanza
-    Stanza.find_by(number: stanza.number + 1)
+    self.class.find_by(absolute_number: absolute_number + 1)
   end
 end
