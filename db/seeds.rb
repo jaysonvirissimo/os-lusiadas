@@ -6,7 +6,7 @@ puts 'Seeding the entire epic can take up to 2 minutes.'
 puts 'Building now...'
 
 string = File.read("#{Rails.root}/lib/assets/os-lusiadas.txt")
-EpicTextConverter.convert(string)
+EpicTextParser.call(string)
 
 after = Time.current
 puts "Completed in #{(after - before).round} seconds."

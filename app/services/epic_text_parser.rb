@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EpicTextConverter
+class EpicTextParser
   PORTUGUESE_ORDINALS = %w[
     Primeiro
     Segundo
@@ -15,15 +15,15 @@ class EpicTextConverter
   ].freeze
   STANZA_BOUNDS = (1..156)
 
-  def self.convert(string)
-    new(string).convert
+  def self.call(string)
+    new(string).call
   end
 
   def initialize(string)
     @string = string
   end
 
-  def convert
+  def call
     build_cantos
     build_stanzas
   end

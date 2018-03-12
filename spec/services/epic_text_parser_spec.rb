@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe EpicTextConverter do
+RSpec.describe EpicTextParser do
   let(:string) do
     <<~HEREDOC
       Canto Primeiro
@@ -33,21 +33,21 @@ RSpec.describe EpicTextConverter do
 
   subject { described_class.new(string) }
 
-  it { expect(subject).to respond_to(:convert) }
-  it { expect(described_class).to respond_to(:convert) }
+  it { expect(subject).to respond_to(:call) }
+  it { expect(described_class).to respond_to(:call) }
 
   it 'should populate the database with cantos' do
-    expect { subject.convert }.to change { Canto.count }.from(0).to(10)
+    expect { subject.call }.to change { Canto.count }.from(0).to(10)
   end
   it 'should populate the database with stanzas' do
-    expect { subject.convert }.to change { Stanza.count }.from(0).to(2)
+    expect { subject.call }.to change { Stanza.count }.from(0).to(2)
   end
 
   describe 'should properly associate stanzas with cantos' do
     let(:primeiro) { Canto.find_by(number: 1) }
     let(:segundo) { Canto.find_by(number: 2) }
 
-    before { subject.convert }
+    before { subject.call }
 
     it { expect(primeiro).to be }
     it { expect(primeiro.name).to eq('Canto Primeiro') }
