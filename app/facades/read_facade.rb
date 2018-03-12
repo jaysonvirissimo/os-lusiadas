@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ReviewFacade
+class ReadFacade
   POEM_NAME = 'Os Lusiadas'
   VALID_STEPS = (0..5)
 

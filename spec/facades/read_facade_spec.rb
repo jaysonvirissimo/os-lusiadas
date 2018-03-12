@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ReviewFacade do
+RSpec.describe ReadFacade do
   let(:canto) { Fabricate(:canto) }
   let(:stanza) { Fabricate(:stanza, canto: canto, number: 1) }
   let(:line) do

@@ -2,10 +2,10 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        <%= @review_facade.poem_name %>
+        <%= @read_facade.poem_name %>
       </h1>
       <h2 class="subtitle">
-        <%= @review_facade.canto_name %>
+        <%= @read_facade.canto_name %>
       </h2>
     </div>
   </div>
@@ -14,7 +14,7 @@
   <div class="card">
     <header class="card-header">
       <p class="card-header-title">
-        <%= @review_facade.stanza_number %>
+        <%= @read_facade.stanza_number %>
       </p>
       <a href="#" class="card-header-icon" aria-label="more options">
         <span class="icon">
@@ -25,7 +25,7 @@
     <div class="card-content">
       <div class="content">
         <ul class='lines'>
-          <% @review_facade.lines.each do |line| %>
+          <% @read_facade.lines.each do |line| %>
             <li class="<%= line.classes %>">
               <% line.words.each do |word| %>
                 <%=  word.present_html %>
@@ -36,10 +36,10 @@
       </div>
     </div>
     <footer class="card-footer">
-      <%= link_to(@review_facade.reset_button.name, lines_review_url(@review_facade.reset_button.options), class: 'card-footer-item') if @review_facade.reset_button.condition? %>
-      <%= link_to(@review_facade.back_button.name, lines_review_url(@review_facade.back_button.options), class: 'card-footer-item') if @review_facade.back_button.condition? %>
-      <%= link_to(@review_facade.next_button.name, lines_review_url(@review_facade.next_button.options), class: 'card-footer-item') if @review_facade.next_button.condition? %>
-      <%= link_to(@review_facade.done_button.name, lines_test_url(@review_facade.done_button.options), class: 'card-footer-item') if @review_facade.done_button.condition? %>
+      <%= link_to(@read_facade.reset_button.name, lines_read_url(@read_facade.reset_button.options), class: 'card-footer-item') if @read_facade.reset_button.condition? %>
+      <%= link_to(@read_facade.back_button.name, lines_read_url(@read_facade.back_button.options), class: 'card-footer-item') if @read_facade.back_button.condition? %>
+      <%= link_to(@read_facade.next_button.name, lines_read_url(@read_facade.next_button.options), class: 'card-footer-item') if @read_facade.next_button.condition? %>
+      <%= link_to(@read_facade.done_button.name, lines_test_url(@read_facade.done_button.options), class: 'card-footer-item') if @read_facade.done_button.condition? %>
     </footer>
   </div>
 </section>
