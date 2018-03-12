@@ -30,7 +30,7 @@ class EpicTextParser
 
   private
 
-  attr_accessor :current_canto, :current_stanza, :current_line
+  attr_accessor :current_canto, :current_stanza, :current_line, :word_count
   attr_reader :cantos, :string
 
   def build_cantos
@@ -54,10 +54,19 @@ class EpicTextParser
     elsif cantos.pluck(:name).include?(line)
       self.current_canto = cantos.find_by(name: line)
     else
-      self.current_line = Line.create(number: current_stanza.lines.count + 1, stanza: current_stanza)
-      line.split(' ').each_with_index do |word, index|
-        Word.create(line: current_line, value: word, position: index + 1)
-      end
+      self.current_line = Line.create(absolute_number: Line.count + 1, number: current_stanza.lines.count + 1, stanza: current_stanza)
+      convert_words(line.split(' '))
+    end
+  end
+
+  def convert_words(word_values)
+    word_values.each_with_index do |word, index|
+      Word.create(
+        line: current_line,
+        value: word,
+        position: index + 1,
+        absolute_position: Word.count + 1
+      )
     end
   end
 end

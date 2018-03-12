@@ -67,5 +67,22 @@ RSpec.describe EpicTextParser do
       it { expect(words.find_by(position: 1).value).to eq('As') }
       it { expect(words.find_by(position: 6).value).to eq('assinalados,') }
     end
+
+    describe 'and record relative and absolute position of words' do
+      let(:first_word) do
+        Word.find_by(position: 1, absolute_position: 1)
+      end
+      let(:last_word) do
+        Word.find_by(position: 7, absolute_position: 95)
+      end
+
+      it { expect(first_word.value).to eq('As') }
+      it { expect(last_word.value).to eq('ancoraram.') }
+    end
+
+    it 'should record relative and absolute number of lines' do
+      expect(Line.find_by(number: 1, absolute_number: 1)).to be
+      expect(Line.find_by(number: 8, absolute_number: 16)).to be
+    end
   end
 end
