@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class LinesController < ApplicationController
-  # TODO: Split lines controller into learn and review controllers.
-  # TODO: The learn controller should find the next unseen line for read/test.
-  # TODO: The review controller should find the next line in need of review for read/test.
+  # TODO: Review nav button goes to next line to review and displays count.
   def read
     @read_facade = ReadFacade.new(line: line, step: step.to_i)
   end
@@ -21,4 +19,10 @@ class LinesController < ApplicationController
   def step
     params[:step] || 0
   end
+
+  def user
+    current_user || NullUser.new
+  end
+
+  helper_method :user
 end
