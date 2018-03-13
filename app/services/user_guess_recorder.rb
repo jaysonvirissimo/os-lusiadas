@@ -16,9 +16,7 @@ class UserGuessRecorder
   attr_reader :guess, :user, :word
 
   def add_word_to_user
-    unless user.words.include?(word)
-      user.words << word
-    end
+    user.words << word unless user.words.include?(word)
   end
 
   def correct

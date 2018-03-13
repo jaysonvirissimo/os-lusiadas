@@ -4,8 +4,11 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:email) { 'camões@macau.cn' }
+  let(:line) { Fabricate(:line, number: 1) }
   let(:name) { 'Luís de Camões' }
   let(:password) { '1234-abcd' }
+  let(:user) { Fabricate(:user) }
+  let(:word) { Fabricate(:word, absolute_position: 1, line: line) }
   let(:instance) do
     User.new(
       email: email,
@@ -16,20 +19,28 @@ RSpec.describe User, type: :model do
   end
 
   describe '#next_line_to_learn' do
-    let(:line) { Fabricate(:line, number: 1) }
     let(:expected_line) { Fabricate(:line, number: 2) }
-    let(:word) { Fabricate(:word, absolute_position: 1) }
     let(:other_word) { Fabricate(:word, absolute_position: 2) }
     let(:next_word) do
       Fabricate(:word, absolute_position: 3, line: expected_line)
     end
-    let(:user) { Fabricate(:user) }
 
     it 'finds the line associated with the next absolutely positioned word' do
       word && other_word && next_word
       user.words << word
       user.words << other_word
       expect(user.next_line_to_learn).to eq(expected_line)
+    end
+  end
+
+  describe '#next_line_to_review' do
+    before do
+      user.words << word
+      user.wrong_answer_for!(word)
+    end
+
+    it 'finds the line associated with the next word in need of review' do
+      expect(user.next_line_to_review).to eq(line)
     end
   end
 

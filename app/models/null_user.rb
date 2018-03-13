@@ -5,6 +5,10 @@ class NullUser
     Line.find_by(absolute_number: 1)
   end
 
+  def next_line_to_review
+    nil
+  end
+
   def right_answer_for!(word)
     word
   end

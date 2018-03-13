@@ -11,4 +11,8 @@ class User < ApplicationRecord
       Word.find_by(absolute_position: words.pluck(:absolute_position).max + 1).line
     end
   end
+
+  def next_line_to_review
+    words.review.min_by(&:absolute_position).line
+  end
 end
