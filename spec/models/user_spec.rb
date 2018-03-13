@@ -15,6 +15,24 @@ RSpec.describe User, type: :model do
     )
   end
 
+  describe '#next_line_to_learn' do
+    let(:line) { Fabricate(:line, number: 1) }
+    let(:expected_line) { Fabricate(:line, number: 2) }
+    let(:word) { Fabricate(:word, absolute_position: 1) }
+    let(:other_word) { Fabricate(:word, absolute_position: 2) }
+    let(:next_word) do
+      Fabricate(:word, absolute_position: 3, line: expected_line)
+    end
+    let(:user) { Fabricate(:user) }
+
+    it 'finds the line associated with the next absolutely positioned word' do
+      word && other_word && next_word
+      user.words << word
+      user.words << other_word
+      expect(user.next_line_to_learn).to eq(expected_line)
+    end
+  end
+
   context 'with email, name, and password' do
     it { expect(instance).to be_valid }
   end
