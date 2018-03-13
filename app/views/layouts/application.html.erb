@@ -11,7 +11,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to('Os Lusiadas', root_path, class: 'navbar-item') %>
-        <%= link_to('Learn', lines_read_path(id: user.next_line_to_learn), class: 'navbar-item') %>
+        <%= link_to('Learn', lines_read_path(id: viewing_user.next_line_to_learn), class: 'navbar-item') %>
         <% if current_user.present? %>
           <%= link_to('Settings', user_path(current_user), class: 'navbar-item') %>
           <%= link_to('Sign Out', session_path(current_user), method: :delete, class: 'navbar-item') %>
