@@ -12,7 +12,7 @@ class User < ApplicationRecord
   end
 
   def next_line_to_review
-    return nil unless words.count.positive?
+    return nil unless words.count.positive? && words.review.count.positive?
     words.review.min_by(&:absolute_position).line
   end
 
