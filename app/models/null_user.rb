@@ -9,6 +9,10 @@ class NullUser
     nil
   end
 
+  def review_count
+    0
+  end
+
   def right_answer_for!(word)
     word
   end

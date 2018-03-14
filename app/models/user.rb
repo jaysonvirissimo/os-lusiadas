@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def next_line_to_review
     words.review.min_by(&:absolute_position).line
   end
+
+  def review_count
+    words.review.count
+  end
 end
