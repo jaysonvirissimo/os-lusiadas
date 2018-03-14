@@ -13,7 +13,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # TODO: Allow users to delete their accounts.
+    @user = User.find(params[:id])
+
+    # TODO: Use destroy with cleanup of Okubo records.
+    # This may require modifying Okubo gem itself.
+    if authorized? && @user.delete
+      sign_out_user
+      redirect_to :root
+    else
+      render :show
+    end
   end
 
   def new
