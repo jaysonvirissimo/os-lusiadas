@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe LinesController, type: :controller do
   let!(:word) { Fabricate(:word) }
-  describe 'GET #review' do
+  describe 'GET #read' do
     it 'returns http success' do
-      get :review, params: { id: word.line.id }
+      get :read, params: { id: word.line.id }
       expect(response).to have_http_status(:success)
     end
   end

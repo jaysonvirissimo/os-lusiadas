@@ -19,6 +19,10 @@ class Word < ApplicationRecord
 
   belongs_to :line
 
+  def self.first_word
+    find_by(absolute_position: 1)
+  end
+
   def match(guess)
     clean(value) == clean(guess)
   end

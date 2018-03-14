@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe EpicTextConverter do
+RSpec.describe EpicTextParser do
   let(:string) do
     <<~HEREDOC
       Canto Primeiro
@@ -33,21 +33,21 @@ RSpec.describe EpicTextConverter do
 
   subject { described_class.new(string) }
 
-  it { expect(subject).to respond_to(:convert) }
-  it { expect(described_class).to respond_to(:convert) }
+  it { expect(subject).to respond_to(:call) }
+  it { expect(described_class).to respond_to(:call) }
 
   it 'should populate the database with cantos' do
-    expect { subject.convert }.to change { Canto.count }.from(0).to(10)
+    expect { subject.call }.to change { Canto.count }.from(0).to(10)
   end
   it 'should populate the database with stanzas' do
-    expect { subject.convert }.to change { Stanza.count }.from(0).to(2)
+    expect { subject.call }.to change { Stanza.count }.from(0).to(2)
   end
 
   describe 'should properly associate stanzas with cantos' do
     let(:primeiro) { Canto.find_by(number: 1) }
     let(:segundo) { Canto.find_by(number: 2) }
 
-    before { subject.convert }
+    before { subject.call }
 
     it { expect(primeiro).to be }
     it { expect(primeiro.name).to eq('Canto Primeiro') }
@@ -66,6 +66,23 @@ RSpec.describe EpicTextConverter do
       it { expect(words).to_not be_empty }
       it { expect(words.find_by(position: 1).value).to eq('As') }
       it { expect(words.find_by(position: 6).value).to eq('assinalados,') }
+    end
+
+    describe 'and record relative and absolute position of words' do
+      let(:first_word) do
+        Word.find_by(position: 1, absolute_position: 1)
+      end
+      let(:last_word) do
+        Word.find_by(position: 7, absolute_position: 95)
+      end
+
+      it { expect(first_word.value).to eq('As') }
+      it { expect(last_word.value).to eq('ancoraram.') }
+    end
+
+    it 'should record relative and absolute number of lines' do
+      expect(Line.find_by(number: 1, absolute_number: 1)).to be
+      expect(Line.find_by(number: 8, absolute_number: 16)).to be
     end
   end
 end

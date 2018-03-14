@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/rgravina/okubo.git
+  revision: b17c10d8b175c029d155dec863b3fb1a9d142fce
+  specs:
+    okubo (0.0.1)
+      activerecord
+      activesupport
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -211,6 +219,7 @@ DEPENDENCIES
   fabrication
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  okubo!
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.1.4)

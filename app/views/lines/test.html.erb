@@ -38,7 +38,7 @@
       </div>
       <footer class="card-footer">
         <%= link_to(@test_facade.retry_button.name, lines_test_url(@test_facade.retry_button.options), class: @test_facade.retry_button.classes, id: @test_facade.retry_button.id) if @test_facade.retry_button.condition? %>
-        <%= link_to(@test_facade.next_button.name, lines_review_url(@test_facade.next_button.options), class: @test_facade.next_button.classes, id: @test_facade.next_button.id) if @test_facade.next_button.condition? %>
+        <%= link_to(@test_facade.next_button.name, lines_read_url(@test_facade.next_button.options), class: @test_facade.next_button.classes, id: @test_facade.next_button.id) if @test_facade.next_button.condition? %>
       </footer>
     </div>
   </section>
