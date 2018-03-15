@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# TODO: Default to landing page that explains the application.
 
 Rails.application.routes.draw do
   root 'lines#read'

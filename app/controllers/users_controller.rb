@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :set_user, only: %i[edit destroy show update]
+  before_action :verify_authorization, only: %i[edit destroy show update]
+
   def create
     @user = User.new(user_params)
 
@@ -17,11 +20,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-
     # TODO: Use destroy with cleanup of Okubo records.
     # This may require modifying Okubo gem itself.
-    if authorized? && @user.delete
+    if @user.delete
       sign_out_user
       redirect_to :root
     else
@@ -34,9 +35,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-
-    if authorized?
+    if @user
       render :show
     else
       redirect_to(root_url)
@@ -44,9 +43,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
-    if authorized? && @user.update(user_params)
+    if @user.update(user_params)
       redirect_to(@user)
     else
       render :edit
@@ -55,8 +52,12 @@ class UsersController < ApplicationController
 
   private
 
-  def authorized?
-    current_user == @user
+  def verify_authorization
+    deny_user_access unless current_user && current_user == @user
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
   def user_params
