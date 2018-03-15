@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def destroy
     @user = User.find(params[:id])
 
@@ -40,7 +44,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    # TODO: Allow users to edit their data.
+    @user = User.find(params[:id])
+
+    if authorized? && @user.update(user_params)
+      redirect_to(@user)
+    else
+      render :edit
+    end
   end
 
   private
