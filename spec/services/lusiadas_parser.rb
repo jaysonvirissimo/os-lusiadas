@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe EpicTextParser do
+RSpec.describe LusiadasParser do
   let(:string) do
     <<~HEREDOC
       Canto Primeiro

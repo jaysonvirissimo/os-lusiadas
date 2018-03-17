@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EpicTextParser
+class LusiadasParser
   PORTUGUESE_ORDINALS = %w[
     Primeiro
     Segundo
