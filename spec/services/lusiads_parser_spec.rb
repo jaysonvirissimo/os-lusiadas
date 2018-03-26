@@ -9,6 +9,7 @@ RSpec.describe LusiadsParser do
 
       THE FEATS of Arms, and famed heroick Host,
         from occidental Lusitanian strand,
+        *        *        *        *        *
       who o’er the waters ne’er by seaman crost,
         farèd beyond the Taprobane-land,
       forceful in perils and in battle-post,	        5

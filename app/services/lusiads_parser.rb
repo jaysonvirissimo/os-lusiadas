@@ -37,8 +37,9 @@ class LusiadsParser
   end
 
   def valid?(potential_line)
-    return false if potential_line.include?('CANTO')
     return false if potential_line.blank?
+    return false if potential_line.include?('*')
+    return false if potential_line.include?('CANTO')
     true
   end
 end
