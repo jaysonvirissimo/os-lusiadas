@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: Match each line with an English translation.
-
 class Line < ApplicationRecord
   belongs_to :stanza
   has_many :words
