@@ -1,8 +1,7 @@
 # frozen_string_literal: true
-# TODO: Default to landing page that explains the application.
 
 Rails.application.routes.draw do
-  root 'lines#read'
+  root 'static_pages#show'
   get 'lines/read'
   get 'lines/test'
   post 'words/score'
