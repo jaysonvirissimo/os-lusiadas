@@ -32,6 +32,7 @@ class ReadFacade
     @next_button ||= OpenStruct.new(
       condition?: VALID_STEPS.cover?(step + 1),
       name: 'Next',
+      id: 'next-iteration',
       options: { id: line.id, step: step + 1 }
     )
   end

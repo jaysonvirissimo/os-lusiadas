@@ -30,6 +30,13 @@ var makeVisible = function(parent) {
   });
 };
 
+var moveToNextIteration = function() {
+  var button = document.getElementById('next-iteration');
+  if (button) {
+    window.location = button.getAttribute('href');
+  }
+};
+
 var toParams = function(object) {
   return Object.keys(object).map(function(key) {
     return encodeURIComponent(key) + '=' + encodeURIComponent(object[key])

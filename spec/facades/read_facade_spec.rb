@@ -64,6 +64,7 @@ RSpec.describe ReadFacade do
 
     describe '#next_button' do
       it { expect(subject.next_button).to be_condition }
+      it { expect(subject.next_button.id).to be }
       it { expect(subject.next_button.options[:id]).to eq(line.id) }
       it { expect(subject.next_button.options[:step]).to eq(2) }
     end

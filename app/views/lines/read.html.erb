@@ -38,8 +38,23 @@
     <footer class="card-footer">
       <%= link_to(@read_facade.reset_button.name, lines_read_url(@read_facade.reset_button.options), class: 'card-footer-item') if @read_facade.reset_button.condition? %>
       <%= link_to(@read_facade.back_button.name, lines_read_url(@read_facade.back_button.options), class: 'card-footer-item') if @read_facade.back_button.condition? %>
-      <%= link_to(@read_facade.next_button.name, lines_read_url(@read_facade.next_button.options), class: 'card-footer-item') if @read_facade.next_button.condition? %>
+      <%= link_to(@read_facade.next_button.name, lines_read_url(@read_facade.next_button.options), class: 'card-footer-item', id: @read_facade.next_button.id) if @read_facade.next_button.condition? %>
       <%= link_to(@read_facade.done_button.name, lines_test_url(@read_facade.done_button.options), class: 'card-footer-item') if @read_facade.done_button.condition? %>
     </footer>
   </div>
 </section>
+<section class="section" id='hints'>
+    <div class="container level">
+      <p class='level-item'>Hint: Pressing the <code>SPACEBAR</code> is a faster way to move <code>Next</code>.</p>
+    </div>
+  </section>
+<script>
+  (function () {
+    document.body.onkeyup = function(event){
+      var spacebar = 32;
+      if (event.keyCode == spacebar) {
+        moveToNextIteration();
+      }
+    }
+  })();
+</script>
