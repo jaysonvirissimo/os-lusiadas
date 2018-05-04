@@ -8,6 +8,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <div class="modal" id="landing-page-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Welcome (Bem-vindo)!</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <p>Click <code>Learn</code> in the upper left to give <strong>MemorizeOnline</strong> a try right away!</p>
+        </section>
+      </div>
+    </div>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to('MemorizeOnline', root_path, class: 'navbar-item') %>
