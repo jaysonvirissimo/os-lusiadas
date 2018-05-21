@@ -7,6 +7,19 @@ RSpec.describe Line, type: :model do
     it { expect(described_class.new).to_not be_valid }
   end
 
+  describe '#destroy' do
+    let(:line) { Fabricate(:line, words: [word]) }
+    let(:word) { Fabricate(:word) }
+
+    it 'also destroys the associated words' do
+      expect(line).to be_persisted
+      expect(word).to be_persisted
+      line.destroy
+      expect(line).to_not be_persisted
+      expect(word).to_not be_persisted
+    end
+  end
+
   describe '#words' do
     it { expect(described_class.new.words).to be_empty }
   end

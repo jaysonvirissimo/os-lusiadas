@@ -9,9 +9,22 @@ RSpec.describe Stanza, type: :model do
     it { expect(blank_instance).to_not be_valid }
   end
 
-  context '#canto' do
+  describe '#canto' do
     let(:instance) { Fabricate(:stanza) }
 
     it { expect(instance.canto).to be }
+  end
+
+  describe '#destroy' do
+    let(:line) { Fabricate(:line) }
+    let(:stanza) { Fabricate(:stanza, lines: [line]) }
+
+    it 'also destroys the associated lines' do
+      expect(stanza).to be_persisted
+      expect(line).to be_persisted
+      stanza.destroy
+      expect(stanza).to_not be_persisted
+      expect(line).to_not be_persisted
+    end
   end
 end
