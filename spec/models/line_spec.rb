@@ -20,6 +20,16 @@ RSpec.describe Line, type: :model do
     end
   end
 
+  describe '#to_s' do
+    let(:line) { Fabricate(:line, words: [first, second]) }
+    let(:first) { Fabricate(:word, value: 'The', position: 1) }
+    let(:second) { Fabricate(:word, value: 'end.', position: 2) }
+
+    it 'displays the line properly formatted' do
+      expect(line.to_s).to match(/The end./)
+    end
+  end
+
   describe '#words' do
     it { expect(described_class.new.words).to be_empty }
   end
