@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409010844) do
+ActiveRecord::Schema.define(version: 20180528202956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20180409010844) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "absolute_number"
+    t.string "in_english"
     t.index ["stanza_id"], name: "index_lines_on_stanza_id"
   end
 

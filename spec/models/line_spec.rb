@@ -7,6 +7,22 @@ RSpec.describe Line, type: :model do
     it { expect(described_class.new).to_not be_valid }
   end
 
+  describe '.with_english_translations' do
+    subject { described_class.with_english_translations }
+    let(:with) do
+      Fabricate(:line, in_english: 'Oi mate, you have a license for that?')
+    end
+    let(:null) { Fabricate(:line, in_english: nil) }
+    let(:empty) { Fabricate(:line, in_english: '') }
+
+    it 'includes those with an English translation' do
+      expect(subject).to include(with)
+    end
+    it 'excludes those without an English translation' do
+      expect(subject).to_not include(null, empty)
+    end
+  end
+
   describe '#destroy' do
     let(:line) { Fabricate(:line, words: [word]) }
     let(:word) { Fabricate(:word) }
