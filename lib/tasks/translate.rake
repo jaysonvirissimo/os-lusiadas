@@ -9,9 +9,8 @@ namespace :migrate do
     start_time = Time.current
 
     Line.includes(:words).find_each do |line|
-      sentence = line.words.order(:position).pluck(:value).join(' ')
       unless line.in_english.present?
-        translation = EasyTranslate.translate(sentence, to: :english)
+        translation = EasyTranslate.translate(line.to_s, to: :english)
         line.update(in_english: translation)
       end
     end
