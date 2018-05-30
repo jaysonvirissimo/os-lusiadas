@@ -26,11 +26,7 @@
       <div class="content">
         <ul class='lines'>
           <% @read_facade.lines.each do |line| %>
-            <li class="<%= line.classes %>">
-              <% line.words.each do |word| %>
-                <%=  word.present_html %>
-              <% end %>
-            </li>
+            <%= LinePresenter.new(line).html %>
           <% end %>
         </ul>
       </div>
