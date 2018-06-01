@@ -13,6 +13,10 @@ class ReviewLineDecorator
     'line has-text-weight-semibold'
   end
 
+  def present
+    LinePresenter.new(self)
+  end
+
   def words
     @words ||= line.words.order(:position).map do |word|
       WordDecorator.new(word: word, step: step)

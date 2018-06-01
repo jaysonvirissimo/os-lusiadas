@@ -7,6 +7,10 @@ class LineDecorator
     @line = line
   end
 
+  def present
+    LinePresenter.new(self)
+  end
+
   def classes
     'line'
   end
