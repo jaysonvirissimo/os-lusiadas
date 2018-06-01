@@ -25,9 +25,7 @@
     <div class="card-content">
       <div class="content">
         <ul class='lines'>
-          <% @read_facade.lines.each do |line| %>
-            <%= LinePresenter.new(line).html %>
-          <% end %>
+          <%= @read_facade.present_lines %>
         </ul>
       </div>
     </div>

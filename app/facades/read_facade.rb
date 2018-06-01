@@ -57,6 +57,18 @@ class ReadFacade
     "Stanza #{stanza.number}"
   end
 
+  def present_lines
+    lines.map do |line_to_present|
+      line_to_present.present.html
+    end.join.html_safe
+  end
+
+  private
+
+  def canto
+    stanza.canto
+  end
+
   def lines
     @lines ||= stanza.lines.order(:number).map do |current_line|
       if current_line == line
@@ -67,17 +79,11 @@ class ReadFacade
     end
   end
 
-  private
+  def next_line
+    @next_line ||= line.next_line
+  end
 
   def stanza
     line.stanza
-  end
-
-  def canto
-    stanza.canto
-  end
-
-  def next_line
-    @next_line ||= line.next_line
   end
 end

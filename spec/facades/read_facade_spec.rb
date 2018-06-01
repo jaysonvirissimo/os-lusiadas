@@ -39,10 +39,10 @@ RSpec.describe ReadFacade do
       let!(:other_line) { Fabricate(:line, stanza: stanza, number: 2) }
 
       it 'presents the review line' do
-        expect(subject.lines.first).to be_a(ReviewLineDecorator)
+        expect(subject.send(:lines).first).to be_a(ReviewLineDecorator)
       end
       it 'presents the non-review lines' do
-        expect(subject.lines.last).to be_a(LineDecorator)
+        expect(subject.send(:lines).last).to be_a(LineDecorator)
       end
     end
   end
