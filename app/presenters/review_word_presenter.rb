@@ -48,4 +48,4 @@ class ReviewWordPresenter
   def rest_html
     content_tag(:span, rest.value, style: VISIBILITY[rest.visible])
   end
-  end
+end
