@@ -69,14 +69,22 @@ class ReadFacade
     stanza.canto
   end
 
-  def lines
-    @lines ||= stanza.lines.order(:number).map do |current_line|
-      if current_line == line
-        ReviewLineDecorator.new(line: current_line, step: step)
+  def decorators_for(this_line)
+    [].tap do |array|
+      array << TranslatedLineDecorator.new(this_line) if this_line.in_english?
+
+      if this_line == line
+        array << ReviewLineDecorator.new(line: this_line, step: step)
       else
-        LineDecorator.new(current_line)
+        array << LineDecorator.new(this_line)
       end
     end
+  end
+
+  def lines
+    @lines ||= stanza.lines.order(:number).map do |current_line|
+      decorators_for(current_line)
+    end.flatten
   end
 
   def next_line

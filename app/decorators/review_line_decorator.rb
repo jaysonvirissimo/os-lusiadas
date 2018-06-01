@@ -10,7 +10,7 @@ class ReviewLineDecorator
   end
 
   def classes
-    'line has-text-weight-semibold'
+    'line has-text-weight-bold'
   end
 
   def present
