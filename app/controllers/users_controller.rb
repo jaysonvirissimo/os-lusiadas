@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    # TODO: Display errors when present
     @user = User.new
   end
 
