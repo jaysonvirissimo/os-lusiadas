@@ -26,13 +26,7 @@
       <div class="card-content">
         <div class="content">
           <ul class='lines'>
-            <% @test_facade.lines.each do |line| %>
-              <li class="<%= line.classes %>">
-                <% line.words.each do |word| %>
-                  <%= word.present_html %>
-                <% end %>
-              </li>
-            <% end %>
+            <%= @test_facade.present_lines %>
           </ul>
         </div>
       </div>

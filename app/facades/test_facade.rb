@@ -12,16 +12,6 @@ class TestFacade
     canto.name
   end
 
-  def lines
-    @lines ||= stanza.lines.order(:number).map do |current_line|
-      if current_line == line
-        TestLineDecorator.new(current_line)
-      else
-        LineDecorator.new(current_line)
-      end
-    end
-  end
-
   def next_button
     @next_button ||= OpenStruct.new(
       classes: 'card-footer-item',
@@ -33,7 +23,7 @@ class TestFacade
   end
 
   def retry_button
-    @reset_button ||= OpenStruct.new(
+    @retry_button ||= OpenStruct.new(
       classes: 'card-footer-item',
       condition?: true,
       id: 'retry-button',
@@ -50,13 +40,37 @@ class TestFacade
     "Stanza #{stanza.number}"
   end
 
-  private
-
-  def stanza
-    line.stanza
+  def present_lines
+    lines.map do |line_to_present|
+      line_to_present.present.html
+    end.join.html_safe
   end
+
+  private
 
   def canto
     stanza.canto
+  end
+
+  def decorators_for(this_line)
+    [].tap do |array|
+      array << TranslatedLineDecorator.new(this_line) if this_line.in_english?
+
+      if this_line == line
+        array << TestLineDecorator.new(this_line)
+      else
+        array << LineDecorator.new(this_line)
+      end
+    end
+  end
+
+  def lines
+    @lines ||= stanza.lines.order(:number).map do |current_line|
+      decorators_for(current_line)
+    end.flatten
+  end
+
+  def stanza
+    line.stanza
   end
 end

@@ -9,6 +9,10 @@ class TestLineDecorator
     'line'
   end
 
+  def present
+    LinePresenter.new(self)
+  end
+
   def words
     @words ||= line.words.order(:position).map.with_index do |word, index|
       WordDecorator.new(word: word, disabled: index.positive?)
