@@ -54,16 +54,17 @@ class TestFacade
   end
 
   def decorators_for(this_line)
-    [].tap do |array|
-      if with_translations? && this_line.in_english?
-        array << TranslatedLineDecorator.new(this_line)
-      end
+    [
+      translated_line_decorator_for(this_line),
+      line_decorator_for(this_line)
+    ].compact
+  end
 
-      if this_line == line
-        array << TestLineDecorator.new(this_line)
-      else
-        array << LineDecorator.new(this_line)
-      end
+  def line_decorator_for(this_line)
+    if this_line == line
+      TestLineDecorator.new(this_line)
+    else
+      LineDecorator.new(this_line)
     end
   end
 
@@ -75,6 +76,11 @@ class TestFacade
 
   def stanza
     line.stanza
+  end
+
+  def translated_line_decorator_for(this_line)
+    return unless with_translations? && this_line.in_english?
+    TranslatedLineDecorator.new(this_line)
   end
 
   def with_translations?
