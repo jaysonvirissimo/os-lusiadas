@@ -7,7 +7,7 @@ RSpec.describe TestFacade do
   let(:stanza) { Fabricate(:stanza, canto: canto, number: 1) }
   let(:line) { Fabricate(:line, stanza: stanza, number: 1, words: [word]) }
   let(:word) { Fabricate(:word, value: 'Peixe', position: 1) }
-  subject { described_class.new(line) }
+  subject { described_class.new(line: line) }
 
   it { expect(described_class).to respond_to(:new) }
 

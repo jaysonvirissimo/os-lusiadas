@@ -6,9 +6,10 @@ class ReadFacade
 
   attr_reader :line, :step
 
-  def initialize(line:, step: 0)
+  def initialize(line:, step: 0, with_translations: true)
     @line = line
     @step = step
+    @with_translations = with_translations
     raise unless VALID_STEPS.cover?(step)
   end
 
@@ -71,7 +72,9 @@ class ReadFacade
 
   def decorators_for(this_line)
     [].tap do |array|
-      array << TranslatedLineDecorator.new(this_line) if this_line.in_english?
+      if with_translations? && this_line.in_english?
+        array << TranslatedLineDecorator.new(this_line)
+      end
 
       if this_line == line
         array << ReviewLineDecorator.new(line: this_line, step: step)
@@ -93,5 +96,9 @@ class ReadFacade
 
   def stanza
     line.stanza
+  end
+
+  def with_translations?
+    @with_translations
   end
 end
