@@ -4,8 +4,9 @@ class TestFacade
   POEM_NAME = 'Os Lusiadas'
   attr_reader :line
 
-  def initialize(line)
+  def initialize(line:, with_translations: false)
     @line = line
+    @with_translations = with_translations
   end
 
   def canto_name
@@ -54,7 +55,9 @@ class TestFacade
 
   def decorators_for(this_line)
     [].tap do |array|
-      array << TranslatedLineDecorator.new(this_line) if this_line.in_english?
+      if with_translations? && this_line.in_english?
+        array << TranslatedLineDecorator.new(this_line)
+      end
 
       if this_line == line
         array << TestLineDecorator.new(this_line)
@@ -72,5 +75,9 @@ class TestFacade
 
   def stanza
     line.stanza
+  end
+
+  def with_translations?
+    @with_translations
   end
 end

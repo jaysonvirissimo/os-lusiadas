@@ -9,7 +9,7 @@ class LinesController < ApplicationController
   end
 
   def test
-    @test_facade = TestFacade.new(line)
+    @test_facade = TestFacade.new(line: line)
   end
 
   private
