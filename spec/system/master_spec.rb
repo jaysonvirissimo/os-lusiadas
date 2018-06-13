@@ -27,6 +27,8 @@ RSpec.describe 'End-to-end master test', type: :system do
     visit root_url
     expect(page).to have_text 'MemorizeOnline'
 
+    click_button 'close-modal-button'
+
     click_link 'Sign Up'
     expect(page).to have_text 'Name'
     expect(page).to have_text 'Email'
@@ -48,5 +50,9 @@ RSpec.describe 'End-to-end master test', type: :system do
     expect(page).to have_text 'Stanza 1'
     expect(page).to have_text 'The weapons and the barons,'
     expect(page).to have_text 'As armas e os barões assinalados,'
+
+    click_link 'Settings'
+    click_link 'user-edit-link'
+    expect(page).to have_text 'Display English translations while reading'
   end
 end

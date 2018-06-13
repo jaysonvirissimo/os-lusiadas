@@ -3,5 +3,9 @@
   <%= form.text_field :name, class: 'input' %>
   <%= form.label :email, class: 'label' %>
   <%= form.email_field :email, class: 'input' %>
+  <label class="checkbox">
+    <%= form.check_box :read_translation, checked:  @user.read_translation %>
+    Display English translations while reading
+  </label>
   <%= form.submit(class: 'button') %>
 <% end %>
