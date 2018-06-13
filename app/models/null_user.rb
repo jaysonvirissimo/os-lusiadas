@@ -9,6 +9,10 @@ class NullUser
     nil
   end
 
+  def read_translation
+    true
+  end
+
   def review_count
     0
   end

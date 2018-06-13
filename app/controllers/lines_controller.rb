@@ -5,7 +5,7 @@ class LinesController < ApplicationController
   # OPTIMIZE: Improve read action performance.
   # Consider eager loading words along with lines.
   def read
-    @read_facade = ReadFacade.new(line: line, step: step.to_i)
+    @read_facade = read_facade
   end
 
   def test
@@ -16,6 +16,14 @@ class LinesController < ApplicationController
 
   def line
     @line ||= Line.find_by(id: params[:id]) || Line.first
+  end
+
+  def read_facade
+    ReadFacade.new(
+      line: line,
+      step: step.to_i,
+      with_translations: viewing_user.read_translation
+    )
   end
 
   def step
