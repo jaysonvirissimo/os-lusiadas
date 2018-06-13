@@ -52,7 +52,7 @@ RSpec.describe 'End-to-end master test', type: :system do
     expect(page).to have_text 'As armas e os barões assinalados,'
 
     click_link 'Settings'
-    click_link 'user-edit-link'
+    click_link 'Edit'
     expect(page).to have_text 'Display English translations while reading'
   end
 end

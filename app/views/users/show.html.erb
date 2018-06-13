@@ -10,7 +10,7 @@
     </div>
   </div>
   <footer class="card-footer">
-    <%= link_to('Edit', edit_user_path(@user), class: 'card-footer-item', id: 'user-edit-link') %>
+    <%= link_to('Edit', edit_user_path(@user), class: 'card-footer-item') %>
     <%= link_to('Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure you want to delete your user account?'}, class: 'card-footer-item' ) %>
   </footer>
 </div>
