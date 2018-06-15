@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  ALLOWED_ATTRIBUTES = %i[
+    email
+    name
+    password
+    password_confirmation
+    read_translation
+    test_translation
+  ].freeze
+
   before_action :set_user, only: %i[edit destroy show update]
   before_action :verify_authorization, only: %i[edit destroy show update]
 
@@ -62,8 +71,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params
-      .require(:user)
-      .permit(:email, :name, :password, :password_confirmation, :read_translation)
+    params.require(:user).permit(*ALLOWED_ATTRIBUTES)
   end
 end

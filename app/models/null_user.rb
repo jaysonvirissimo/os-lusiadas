@@ -21,6 +21,10 @@ class NullUser
     word
   end
 
+  def test_translation
+    false
+  end
+
   def words
     []
   end

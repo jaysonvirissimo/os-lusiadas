@@ -9,7 +9,7 @@ class LinesController < ApplicationController
   end
 
   def test
-    @test_facade = TestFacade.new(line: line)
+    @test_facade = test_facade
   end
 
   private
@@ -28,5 +28,9 @@ class LinesController < ApplicationController
 
   def step
     params[:step] || 0
+  end
+
+  def test_facade
+    TestFacade.new(line: line, with_translations: viewing_user.test_translation)
   end
 end
