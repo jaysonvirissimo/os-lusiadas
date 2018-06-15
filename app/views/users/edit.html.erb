@@ -7,5 +7,9 @@
     <%= form.check_box :read_translation, checked:  @user.read_translation %>
     Display English translations while reading
   </label>
+  <label class="checkbox">
+    <%= form.check_box :test_translation, checked:  @user.test_translation %>
+    Display English translations during testing 
+  </label>
   <%= form.submit(class: 'button') %>
 <% end %>

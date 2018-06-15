@@ -33,6 +33,12 @@ RSpec.describe NullUser do
     it { expect(instance.right_answer_for!(word)).to be_truthy }
   end
 
+  describe '#test_translation' do
+    it 'defaults to false' do
+      expect(instance.test_translation).to be_falsey
+    end
+  end
+
   describe '#words' do
     it { expect(instance.words).to be_empty }
   end

@@ -54,5 +54,6 @@ RSpec.describe 'End-to-end master test', type: :system do
     click_link 'Settings'
     click_link 'Edit'
     expect(page).to have_text 'Display English translations while reading'
+    expect(page).to have_text 'Display English translations during testing'
   end
 end
