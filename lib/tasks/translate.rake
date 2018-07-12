@@ -8,11 +8,8 @@ namespace :migrate do
     puts 'Preparing to translate...'
     start_time = Time.current
 
-    Line.includes(:words).find_each do |line|
-      unless line.in_english.present?
-        translation = EasyTranslate.translate(line.to_s, to: :english)
-        line.update(in_english: translation)
-      end
+    Line.where.not(in_english: [nil, '']).includes(:words).find_each do |line|
+      line.update(in_english: EasyTranslate.translate(line.to_s, to: :english))
     end
 
     end_time = Time.current
