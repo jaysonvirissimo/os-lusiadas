@@ -40,6 +40,17 @@
       </div>
     </nav>
     <div class='container'>
+      <% if flash.alert.present? %>
+        <article class="message is-warning">
+          <div class="message-header">
+            <p>Warning</p>
+            <button class="delete" aria-label="delete"></button>
+          </div>
+          <div class="message-body">
+            <%= flash.alert %>
+          </div>
+        </article>
+      <% end %>
       <%= yield %>
     </div>
     <footer class="footer">
