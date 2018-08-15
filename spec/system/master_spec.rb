@@ -59,5 +59,13 @@ RSpec.describe 'End-to-end master test', type: :system do
     expect(page).to have_text 'Stanza 1'
     expect(page).to have_text 'The weapons and the barons,'
     expect(page).to have_text 'As armas e os barões assinalados,'
+    expect(page).to_not have_text 'Reset'
+    expect(page).to_not have_text 'Back'
+    expect(page).to have_text 'Next'
+
+    click_link 'Next'
+    expect(page).to have_text 'Reset'
+    expect(page).to have_text 'Back'
+    expect(page).to have_text 'Next'
   end
 end

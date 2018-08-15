@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TestFacade
+  # TODO: Extract common behavior to stanza facade.
   POEM_NAME = 'Os Lusiadas'
   attr_reader :line
 

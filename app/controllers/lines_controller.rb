@@ -2,12 +2,14 @@
 
 class LinesController < ApplicationController
   # TODO: Extract nav bar logic into PORO.
+  # TODO: Extract footer to read facade.
   # OPTIMIZE: Improve read action performance.
   # Consider eager loading words along with lines.
   def read
     @read_facade = read_facade
   end
 
+  # TODO: Extract footer to test facade.
   def test
     @test_facade = test_facade
   end
