@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ReadFacade
+  # TODO: Extract common behavior to stanza facade.
   POEM_NAME = 'Os Lusiadas'
   VALID_STEPS = (0..5)
 
