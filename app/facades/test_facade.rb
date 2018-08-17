@@ -1,17 +1,9 @@
 # frozen_string_literal: true
 
-class TestFacade
-  # TODO: Extract common behavior to stanza facade.
-  POEM_NAME = 'Os Lusiadas'
-  attr_reader :line
-
+class TestFacade < PoemFacade
   def initialize(line:, with_translations: false)
-    @line = line
+    super(line)
     @with_translations = with_translations
-  end
-
-  def canto_name
-    canto.name
   end
 
   def next_button
@@ -34,25 +26,7 @@ class TestFacade
     )
   end
 
-  def poem_name
-    POEM_NAME
-  end
-
-  def stanza_number
-    "Stanza #{stanza.number}"
-  end
-
-  def present_lines
-    lines.map do |line_to_present|
-      line_to_present.present.html
-    end.join.html_safe
-  end
-
   private
-
-  def canto
-    stanza.canto
-  end
 
   def decorators_for(this_line)
     [
@@ -73,10 +47,6 @@ class TestFacade
     @lines ||= stanza.lines.order(:number).map do |current_line|
       decorators_for(current_line)
     end.flatten
-  end
-
-  def stanza
-    line.stanza
   end
 
   def translated_line_decorator_for(this_line)
