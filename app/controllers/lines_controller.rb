@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class LinesController < ApplicationController
-  # TODO: Extract nav bar logic into PORO.
   # TODO: Extract footer to read facade.
   # OPTIMIZE: Improve read action performance.
   # Consider eager loading words along with lines.

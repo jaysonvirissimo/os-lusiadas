@@ -9,6 +9,10 @@ class NullUser
     nil
   end
 
+  def persisted?
+    false
+  end
+
   def read_translation
     true
   end

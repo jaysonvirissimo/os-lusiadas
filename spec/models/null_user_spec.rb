@@ -17,6 +17,10 @@ RSpec.describe NullUser do
     it { expect(instance.next_line_to_review).to_not be }
   end
 
+  describe '#persisted?' do
+    it { expect(instance).to_not be_persisted }
+  end
+
   describe '#read_translation' do
     it 'defaults to true' do
       expect(instance.read_translation).to be_truthy
