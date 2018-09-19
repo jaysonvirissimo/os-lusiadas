@@ -3,7 +3,7 @@ language: ruby
 rvm:
 - 2.5.1
 before_install:
-  - gem install bundler
+- gem install bundler
 services:
 - postgresql
 before_script:
@@ -11,7 +11,7 @@ before_script:
 deploy:
   provider: heroku
   api_key:
-    secure: qvLYwhTiiIUn8deQkaRdb6Cc7IILFSpdGj0PoIz/p1JeFw0SGxLuTtpv5YFD7cJJmYZIBjajarC2M+A/WsM7kydyZcEj9k8EOuzjIlFBoMbHy0pS2Mk1uQBmdUWaziSaik2AafQ6SnU69CqwK2WAtJQtsXCcGNYgvS/b9HnS7/vrrt/hXsd1Y2kTaTI20sIqOOKMxn0obNdRpQ/j5nnR9zmpghcovCOIbYXnRmz/Qr14MY2c165TmOrZ795QZGTAyDYmTmaQ0774ndOMvV8ZFWw5tC34o2QsHMhSmze1tU8JT+l+3ILwbeGx5ZcdBsIXa5K6iAESHI0yX01WKK/MGxhMzlARux5ChOoSKr7G6lLpT3VUjturYw3dzae9wEyYKmlUKDELErYSzyFuCp/BRATij0SfFwAeOAhK0fdPVvhKTZRbMGmleIvq1U1bNWVFDqSFG0pFtO6A+IMmHBIXzQPIVsY6vnWUtx6bEJUVtmQJ6acKB0GXJriL/BXJc55KsoHcVlD6a7tgiH1LFiu1+6dpedRHibsx29gb7AjQtDjzhkKD9wYGmooeV0g6T03eUKoeF6QYF/sCEnplakIUaxi7hj7T72BxOj0u2UW6273kYNkeB9thSrTqo2wU02YSWwH/ZOkwuxJ2m0akyRzTRDpfP4J0qcoNmFKM7S5WY0Y=
+    secure: r3jetRDU+wKXWToKuWGSwEqTWm60kmu/53Ism5J0B2l8IZALXM/21bUVOWeNu124wXCPKwZI44HHbWdPU/5eioC8aenLMYIbZPaaYAoYb+fngK5TdEA5HRPjlIrMY02Fs03RQvDgM5VFRI949Jxhc9Pzr1jq/Y4jbgFD5eDY5aO7qevPgLc3e35dR6EIMDi0YXKGJpr8H7aE0HX55qbDL/+StT87C/pHP+CGkG4T0FG1ltXLqvxrELxouLQTjkq1cETLpUE3+JqiPDHVJDu7Vdh0CBzNRx/5h4PHxWyiZQebpx+2pvVh3KAkVnAE7B3Jv83wTMQtDDZLRnoohS+AHLC2E8rf/6gWQlgaFS8snZAlzr3eYZBqSYihaN4s/U9ddV6dyqYUyKY/qwVqAoB6KxwACOIEOTK3yYxu29LgMcSLpz/qQAfWS+iQmgPERODL/n+pxAGRoH09IQDqxVNqfmgWAfWANA8S6RHqavM4w+3gF0hapDlO535d5a208GWFgHf4u+9VJB3dL0b/d05gE/E84xPVwxWI/9M4noI8Stwwz2kKcOpWOptoVU9r7Z8cLKPy1GFydDmIAYYsvz3T3NADmfREOdCqBXztRAw/xWMsJvw1CCay4PT8bUThfagqd3Z89FDCff5soVDkhR8POV1dY9xAvRQacZ8MLKySk9E=
   app:
     master: pure-springs-67836
-  run: "rails db:migrate"
+  run: rails db:migrate
