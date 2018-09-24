@@ -20,6 +20,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       redirect_to(@user)
     else
+      flash.now.alert = @user.pretty_errors
       render :new
     end
   end
@@ -40,7 +41,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    # TODO: Display errors when present
     @user = User.new
   end
 
