@@ -16,6 +16,10 @@ class User < ApplicationRecord
     words.review.min_by(&:absolute_position).line
   end
 
+  def pretty_errors
+    errors.full_messages.to_sentence
+  end
+
   def review_count
     words.review.count
   end
