@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path
   end
 
+  def flash_presenter
+    @flash_presenter ||= FlashPresenter.new(flash)
+  end
+
   def nav_presenter
     @nav_presenter ||= NavPresenter.new(viewing_user: viewing_user)
   end
@@ -16,6 +20,5 @@ class ApplicationController < ActionController::Base
     current_user || NullUser.new
   end
 
-  helper_method :nav_presenter
-  helper_method :viewing_user
+  helper_method :flash_presenter, :nav_presenter, :viewing_user
 end
