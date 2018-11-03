@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post 'words/score'
 
   resources :users
-  resources :sessions, only: [:create, :destroy, :new]
+  resources :sessions, only: %i[create destroy new]
 end
