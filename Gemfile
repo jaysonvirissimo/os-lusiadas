@@ -9,6 +9,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'authem'
+gem 'bootsnap'
 gem 'bulma-rails', '~> 0.6.2'
 gem 'coffee-rails', '~> 4.2'
 gem 'easy_translate'
@@ -16,7 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'okubo', git: 'https://github.com/rgravina/okubo.git'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2.1'
 gem 'sass-rails', '~> 5.0'
 gem 'skylight'
 gem 'turbolinks', '~> 5'
