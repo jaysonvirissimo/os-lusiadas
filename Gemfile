@@ -8,6 +8,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'actionview', '>= 5.2.2.1'
 gem 'authem'
 gem 'bootsnap'
 gem 'bulma-rails', '~> 0.6.2'
@@ -18,7 +19,8 @@ gem 'okubo', git: 'https://github.com/rgravina/okubo.git'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rack', '>= 2.0.6'
-gem 'rails', '~> 5.2.1'
+gem 'rails', '~> 5.2.3'
+gem 'railties', '>= 5.2.2.1'
 gem 'sass-rails', '~> 5.0'
 gem 'skylight'
 gem 'turbolinks', '~> 5'
