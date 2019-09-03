@@ -1,9 +1,9 @@
 GIT
-  remote: https://github.com/rgravina/okubo.git
-  revision: b17c10d8b175c029d155dec863b3fb1a9d142fce
+  remote: https://github.com/jaysonvirissimo/okubo.git
+  revision: bc05a51d0cdccd5d21c27a0f404ffb6990dda9ae
   specs:
     okubo (0.0.1)
-      activerecord
+      activerecord (~> 5.2.3)
       activesupport
 
 GEM
