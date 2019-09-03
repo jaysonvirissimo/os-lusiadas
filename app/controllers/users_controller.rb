@@ -30,8 +30,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # TODO: Use destroy with cleanup of Okubo records.
-    # This may require modifying Okubo gem itself.
     if @user.delete
       sign_out_user
       redirect_to :root
