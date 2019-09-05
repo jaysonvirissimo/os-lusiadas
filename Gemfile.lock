@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/jaysonvirissimo/okubo.git
   revision: bc05a51d0cdccd5d21c27a0f404ffb6990dda9ae
+  ref: bc05a51d0cdccd5d21c27a0f404ffb6990dda9ae
   specs:
     okubo (0.0.1)
       activerecord (~> 5.2.3)
