@@ -47,6 +47,7 @@
     document.body.onkeyup = function(event){
       var spacebar = 32;
       if (event.keyCode == spacebar) {
+        event.preventDefault();
         moveToNextIteration();
       }
     }
