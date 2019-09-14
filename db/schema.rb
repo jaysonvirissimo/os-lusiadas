@@ -10,10 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180615043133) do
+ActiveRecord::Schema.define(version: 2019_09_14_040540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_recall_decks", force: :cascade do |t|
+    t.string "user_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "user_type"], name: "index_active_recall_decks_on_user_id_and_user_type"
+    t.index ["user_type", "user_id"], name: "index_active_recall_decks_on_user_type_and_user_id"
+  end
+
+  create_table "active_recall_items", force: :cascade do |t|
+    t.bigint "deck_id"
+    t.string "source_type"
+    t.bigint "source_id"
+    t.integer "box", default: 0
+    t.datetime "last_reviewed"
+    t.datetime "next_review"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "times_right", default: 0
+    t.integer "times_wrong", default: 0
+    t.index ["deck_id"], name: "index_active_recall_items_on_deck_id"
+    t.index ["source_id", "source_type"], name: "index_active_recall_items_on_source_id_and_source_type"
+    t.index ["source_type", "source_id"], name: "index_active_recall_items_on_source_type_and_source_id"
+  end
 
   create_table "authem_sessions", force: :cascade do |t|
     t.string "role", null: false

@@ -9,6 +9,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'actionview', '>= 5.2.2.1'
+gem 'active_recall', git: 'https://github.com/jaysonvirissimo/active_recall.git'
 gem 'authem'
 gem 'bootsnap'
 gem 'bulma-rails', '~> 0.6.2'
@@ -16,7 +17,6 @@ gem 'coffee-rails', '~> 4.2'
 gem 'easy_translate'
 gem 'jbuilder', '~> 2.5'
 gem 'nokogiri', '>= 1.10.4'
-gem 'okubo', git: 'https://github.com/jaysonvirissimo/okubo.git', ref: 'bc05a51d0cdccd5d21c27a0f404ffb6990dda9ae'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rack', '>= 2.0.6'
