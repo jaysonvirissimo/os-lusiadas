@@ -9,7 +9,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'actionview', '>= 5.2.2.1'
-gem 'active_recall', git: 'https://github.com/jaysonvirissimo/active_recall.git'
+gem 'active_recall', '~> 1.0'
 gem 'authem'
 gem 'bootsnap'
 gem 'bulma-rails', '~> 0.6.2'
