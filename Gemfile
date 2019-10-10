@@ -20,7 +20,7 @@ gem 'nokogiri'
 gem 'pg'
 gem 'puma'
 gem 'rack'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '6.0.0'
 gem 'railties'
 gem 'sass-rails'
 gem 'skylight'
@@ -37,15 +37,21 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'fabrication'
-  gem 'rspec-rails'
+  # Current version of rspec-rails is broken. See here: http://jessehouse.com/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/.
+  # TODO: Replace with just rspec-rails once the mainline version is fixed.
+  gem 'rspec-core', git: 'https://github.com/rspec/rspec-core'
+  gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations'
+  gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks'
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
+  gem 'rspec-support', git: 'https://github.com/rspec/rspec-support'
   gem 'selenium-webdriver'
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'spring-watcher-listen'
+  gem 'web-console'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
