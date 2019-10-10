@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'static_pages#show'
+  root to: 'static_pages#root'
   get 'lines/read'
   get 'lines/test'
   post 'words/score'

@@ -1,0 +1,54 @@
+<div class='container'>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          MemorizeOnline
+        </h1>
+        <h2 class="subtitle">
+          Memorize the epic poem of the Portuguese, using cutting edge learning techniques.
+        </h2>
+      </div>
+    </div>
+  </section>
+  <section  class='content' id='instructions'>
+    <blockquote cite='https://en.wikipedia.org/wiki/Os_Lus%C3%ADadas'>
+      Os Lusíadas, usually translated as The Lusiads, is a Portuguese epic poem by Luís Vaz de Camões.
+      It is often regarded as the most important work of Portuguese literature and is frequently compared to the Aeneid, Virgil's great epic poem.
+      The work celebrates the discovery of a sea route to India by the Portuguese explorer Vasco da Gama (1469–1524).
+      The ten cantos of the poem are in ottava rima and total 1,102 stanzas.
+      -- Wikipedia
+    </blockquote>
+    <h3>Instructions</h3>
+    <ol>
+      <li>
+        <p>To get started, click the <code>Learn</code> on the navigation bar above and read the first line.</p>
+        <%= image_tag('example-1.png') %>
+      </li>
+      <li>
+        <p>Click <code>Next</code> and try to guess the obfuscated words.</p>
+        <%= image_tag('example-2.png') %>
+      </li>
+      <li>
+        <p>Click on the grey boxes to reveal the words underneath when you need help remembering.</p>
+        <%= image_tag('example-3.png') %>
+      </li>
+      <li>
+        <p>Test your knowledge by typing each word from memory. Red means you made a mistake; green means you got it right. Don't worry about the diacritical marks.</p>
+        <%= image_tag('example-4.png') %>
+      </li>
+      <li>
+        <p>
+          You can keep going for as long as you want.
+          When you come back a later, click <code>Review</code> to go over only the words you struggled with the most or are about to forget.
+          Because we determine this using the <a href='https://en.wikipedia.org/wiki/Leitner_system'>Leitner system</a>, you never have to waste time practicing words you already know.
+        </p>
+      </li>
+    </ol>
+  </section>
+</div>
+<script>
+(function () {
+  setupModal();
+})();
+</script>
