@@ -1,46 +1,3 @@
-GIT
-  remote: https://github.com/rspec/rspec-core
-  revision: 82928aac51e1e7a06f155f73a72d6a5a88e7b2a8
-  specs:
-    rspec-core (3.10.0.pre)
-      rspec-support (= 3.10.0.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-expectations
-  revision: 74871dfec85e656cddc80672f8b1eaf766651cf6
-  specs:
-    rspec-expectations (3.10.0.pre)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (= 3.10.0.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-mocks
-  revision: 903c342e14080c40a8aa62a604d13cf23963ecfa
-  specs:
-    rspec-mocks (3.10.0.pre)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (= 3.10.0.pre)
-
-GIT
-  remote: https://github.com/rspec/rspec-rails
-  revision: 4a933fde99de79b13ae14afa1568f7188f1d967a
-  branch: 4-0-dev
-  specs:
-    rspec-rails (4.0.0.beta2)
-      actionpack (>= 4.2)
-      activesupport (>= 4.2)
-      railties (>= 4.2)
-      rspec-core (~> 3.8)
-      rspec-expectations (~> 3.8)
-      rspec-mocks (~> 3.8)
-      rspec-support (~> 3.8)
-
-GIT
-  remote: https://github.com/rspec/rspec-support
-  revision: 3d227e50f7a3c1e88e3cb113a93537f7d524c1be
-  specs:
-    rspec-support (3.10.0.pre)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -206,6 +163,23 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rspec-core (3.9.1)
+      rspec-support (~> 3.9.1)
+    rspec-expectations (3.9.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-mocks (3.9.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.9.0)
+    rspec-rails (4.0.0.beta3)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (~> 3.8)
+      rspec-expectations (~> 3.8)
+      rspec-mocks (~> 3.8)
+      rspec-support (~> 3.8)
+    rspec-support (3.9.2)
     rubyzip (2.0.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -282,11 +256,7 @@ DEPENDENCIES
   rack
   rails (= 6.0.0)
   railties
-  rspec-core!
-  rspec-expectations!
-  rspec-mocks!
-  rspec-rails!
-  rspec-support!
+  rspec-rails (= 4.0.0.beta3)
   sass-rails
   selenium-webdriver
   skylight
