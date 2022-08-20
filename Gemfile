@@ -35,7 +35,7 @@ gem 'uglifier'
 group :development, :test do
   gem 'bullet'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'capybara', '~> 2.13'
+  gem 'capybara'
   gem 'fabrication'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
