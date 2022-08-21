@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '3.0.4'
+ruby '3.1.2'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
@@ -16,6 +16,7 @@ gem 'bulma-rails'
 gem 'coffee-rails'
 gem 'easy_translate'
 gem 'jbuilder'
+gem 'net-smtp'
 gem 'nokogiri'
 gem 'pg'
 gem 'puma'
