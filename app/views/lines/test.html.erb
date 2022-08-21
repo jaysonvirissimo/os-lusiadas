@@ -41,7 +41,9 @@
 (function () {
   document.body.onkeyup = function(event){
     var spacebar = 32;
-    if (event.keyCode == spacebar) {
+    if (event.keyCode === spacebar) {
+      event.preventDefault();
+
       var enabledInput = findNextEnabledInput();
       if (enabledInput) {
         submitGuess(enabledInput);
