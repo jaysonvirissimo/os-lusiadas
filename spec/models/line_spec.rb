@@ -46,6 +46,19 @@ RSpec.describe Line, type: :model do
     end
   end
 
+  describe '#to_ssml' do
+    let(:line) { Fabricate(:line, words: words) }
+    let(:words) do
+      ["As", "armas", "e", "os", "barões", "assinalados,"].map.with_index do |word, index|
+        Fabricate(:word, value: word, position: index + 1)
+      end
+    end
+
+    specify do
+      expect(line.to_ssml).to match("<s>As armas e os barões assinalados,</s>")
+    end
+  end
+
   describe '#words' do
     it { expect(described_class.new.words).to be_empty }
   end

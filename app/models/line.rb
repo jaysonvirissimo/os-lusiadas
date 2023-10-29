@@ -13,4 +13,8 @@ class Line < ApplicationRecord
   def to_s
     words.order(:position).pluck(:value).join(' ')
   end
+
+  def to_ssml
+    "<s>#{words.order(:position).pluck(:value).join(' ')}</s>"
+  end
 end

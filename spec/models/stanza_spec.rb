@@ -27,4 +27,7 @@ RSpec.describe Stanza, type: :model do
       expect(line).to_not be_persisted
     end
   end
+
+  describe '#to_ssml' do
+  end
 end
