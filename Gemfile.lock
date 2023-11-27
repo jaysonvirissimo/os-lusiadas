@@ -221,8 +221,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    skylight (5.3.3)
-      activesupport (>= 5.2.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -286,7 +284,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   selenium-webdriver
-  skylight
   spring
   spring-watcher-listen
   turbolinks

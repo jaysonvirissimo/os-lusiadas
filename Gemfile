@@ -23,7 +23,6 @@ gem 'rack'
 gem 'rails', '6.1.7.6'
 gem 'railties'
 gem 'sass-rails'
-gem 'skylight'
 gem 'turbolinks'
 gem 'uglifier'
 
